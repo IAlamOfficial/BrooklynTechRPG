@@ -1,0 +1,48 @@
+/**
+ * 
+ */
+package TechRPG;
+
+import guiTeacher.GUIApplication;
+import player.Player;
+import screens.InventoryScreen;
+
+/**
+ * @author Ryan Situ
+ *
+ */
+public class TechGame extends GUIApplication {
+	
+	private static InventoryScreen invScreen;
+	private static Player player;
+
+	/**
+	 * @param width
+	 * @param height
+	 */
+	public TechGame(int width, int height) {
+		super(width, height);
+		setVisible(true);
+		// TODO Auto-generated constructor stub
+	}
+
+	/* (non-Javadoc)
+	 * @see guiTeacher.GUIApplication#initScreen()
+	 */
+	@Override
+	public void initScreen() {
+		invScreen = new InventoryScreen(getWidth(),getHeight());
+		setScreen(invScreen);
+
+	}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		TechGame wamg = new TechGame(800,500);
+		Thread game = new Thread(wamg);
+		game.start();
+	}
+
+}
