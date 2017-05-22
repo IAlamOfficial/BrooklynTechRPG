@@ -40,8 +40,8 @@ public class TechGame extends GUIApplication {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		TechGame wamg = new TechGame(800,500);
-		Thread game = new Thread(wamg);
+		TechGame trpg = new TechGame(800,500);
+		Thread game = new Thread(trpg);
 		game.start();
 	}
 
