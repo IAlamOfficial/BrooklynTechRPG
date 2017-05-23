@@ -3,11 +3,13 @@ package items;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
+import TechRPG.TechGame;
 import guiTeacher.components.Action;
 import guiTeacher.components.Component;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Clickable;
+import player.Player;
 import techInterfaces.Ability;
 
 public abstract class Item extends Component implements Clickable {
@@ -81,7 +83,8 @@ public abstract class Item extends Component implements Clickable {
 	}
 
 	public void setCost(double cost) {
-		this.cost = cost;
+		Player p = TechGame.getPlayer();
+		this.cost = cost * p.getSocial();
 	}
 
 	@Override

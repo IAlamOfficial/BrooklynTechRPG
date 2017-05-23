@@ -16,25 +16,14 @@ public class Player {
 	private int social;
 	
 	public Player() {
-		this.level = 0;
-		this.knowledgePoints = 0;
-		this.money = 0.0;
-		this.energy = 0;
-		this.strength = 0;
-		this.time = 0;
-		this.rep = 0;
-		this.social = 0;
-	}
-	
-	public Player(int lvl, int kp, double money, int energy, int strength, int time, int rep, int social) {
-		this.level = lvl;
-		this.knowledgePoints = kp;
-		this.money = money;
-		this.energy = energy;
-		this.strength = strength;
-		this.time = time;
-		this.rep = rep;
-		this.social = social;
+		level = 0;
+		knowledgePoints = 0;
+		money = 0.0;
+		energy = 0;
+		strength = 0;
+		time = 0;
+		rep = 0;
+		social = 0;
 	}
 	
 	public int getLevel() {
@@ -100,5 +89,7 @@ public class Player {
 	public void setSocial(int social) {
 		this.social = social;
 	}
+
+	
 
 }

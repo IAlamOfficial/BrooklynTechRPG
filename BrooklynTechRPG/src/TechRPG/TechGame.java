@@ -45,4 +45,12 @@ public class TechGame extends GUIApplication {
 		game.start();
 	}
 
+	public static Player getPlayer() {
+		return player;
+	}
+
+	public static void setPlayer(Player player) {
+		TechGame.player = player;
+	}
+
 }
