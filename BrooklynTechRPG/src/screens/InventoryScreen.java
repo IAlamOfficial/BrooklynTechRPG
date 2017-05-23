@@ -5,6 +5,7 @@ import java.util.List;
 import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
+import items.Coffee;
 import items.EnergyDrink;
 import items.InfoBox;
 import items.SampleItem;

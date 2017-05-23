@@ -1,6 +1,4 @@
-package screens;
-
-import items.Item;
+package items;
 
 public class Coffee extends Item {
 
