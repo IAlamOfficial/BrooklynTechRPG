@@ -2,8 +2,20 @@ package player;
 
 public class Player {
 
-	public Player() {
-		// TODO Auto-generated constructor stub
+	/*
+	 * Player stats 
+	 */
+	
+	int level;
+	int knowledgePoints;
+	double money;
+	int energy;
+	int strength;
+	
+	
+	
+	public Player(int i) {
+		
 	}
 
 }
