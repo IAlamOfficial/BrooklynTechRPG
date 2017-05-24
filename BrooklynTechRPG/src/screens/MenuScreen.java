@@ -39,7 +39,7 @@ public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListe
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+	
 		
 		bitTech = new Graphic(0,0,"resources/BitTech.jpg");
 		bitTech.setX((getWidth()-bitTech.getWidth())/2);
