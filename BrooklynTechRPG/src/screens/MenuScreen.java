@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import guiTeacher.components.Graphic;
 import guiTeacher.components.StyledComponent;
 import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
@@ -15,7 +16,7 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListener{
 
 	private TextLabel title;
-	
+	private Graphic bitTech;
 	public MenuScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -39,6 +40,10 @@ public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListe
 			e.printStackTrace();
 		}
 		
+		
+		bitTech = new Graphic(0,0,"resources/BitTech.jpg");
+		bitTech.setX((getWidth()-bitTech.getWidth())/2);
+		viewObjects.add(bitTech);
 		viewObjects.add(title);
 	}
 
