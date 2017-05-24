@@ -31,7 +31,7 @@ public class Player {
 	}
 
 	public void setLevel(int level) {
-		this.level = level;
+		this.level += level;
 	}
 
 	public int getKnowledgePoints() {
@@ -39,7 +39,7 @@ public class Player {
 	}
 
 	public void setKnowledgePoints(int knowledgePoints) {
-		this.knowledgePoints = knowledgePoints;
+		this.knowledgePoints += knowledgePoints;
 	}
 
 	public double getMoney() {
@@ -47,7 +47,7 @@ public class Player {
 	}
 
 	public void setMoney(double money) {
-		this.money = money;
+		this.money += money;
 	}
 
 	public int getEnergy() {
@@ -55,7 +55,7 @@ public class Player {
 	}
 
 	public void setEnergy(int energy) {
-		this.energy = energy;
+		this.energy += energy;
 	}
 
 	public int getStrength() {
@@ -63,7 +63,7 @@ public class Player {
 	}
 
 	public void setStrength(int strength) {
-		this.strength = strength;
+		this.strength += strength;
 	}
 
 	public int getTime() {
@@ -71,7 +71,7 @@ public class Player {
 	}
 
 	public void setTime(int time) {
-		this.time = time;
+		this.time += time;
 	}
 
 	public int getRep() {
@@ -79,7 +79,7 @@ public class Player {
 	}
 
 	public void setRep(int rep) {
-		this.rep = rep;
+		this.rep += rep;
 	}
 
 	public int getSocial() {
@@ -87,7 +87,7 @@ public class Player {
 	}
 
 	public void setSocial(int social) {
-		this.social = social;
+		this.social += social;
 	}
 
 	
