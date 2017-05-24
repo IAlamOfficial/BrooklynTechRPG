@@ -90,7 +90,9 @@ public class TextLabel extends StyledComponent implements TextComponent{
 			return size;
 		}
 		
-		
+		public void drawString(Graphics2D g, FontMetrics fm){
+			g.drawString(text, 0, fm.getHeight());
+		}
 		@Override
 		public void update(Graphics2D g) {
 			clear();
@@ -104,7 +106,7 @@ public class TextLabel extends StyledComponent implements TextComponent{
 			FontMetrics fm = g.getFontMetrics();
 			if(text != null){
 //				Utilities.drawText(g, text, 0, getWidth(), getHeight(), align);
-				g.drawString(text, 0, fm.getHeight());
+				drawString(g, fm);
 			}
 		}
 
