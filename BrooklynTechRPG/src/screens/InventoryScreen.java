@@ -7,8 +7,11 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 import items.Coffee;
 import items.EnergyDrink;
+import items.Homework;
 import items.InfoBox;
 import items.SampleItem;
+import items.StudyGuide;
+import items.Test;
 
 public class InventoryScreen extends FullFunctionScreen {
 
@@ -24,17 +27,36 @@ public class InventoryScreen extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		descriptionDisplay = new InfoBox(250, 50, 300, 300, "");
 		viewObjects.add(descriptionDisplay);
-		SampleItem test = new SampleItem(20,20+(yPos*65),200,75);
+		
+		SampleItem test = new SampleItem(20,20+(yPos*80),200,75);
+		test.setInfoBox(descriptionDisplay);
 		viewObjects.add(test);
 		yPos++;
-		EnergyDrink drink = new EnergyDrink(20,20+(yPos*65),200,75);
+		
+		Coffee coffee = new Coffee(20,20+(yPos*80),200,75);
+		coffee.setInfoBox(descriptionDisplay);
+		viewObjects.add(coffee);
+		yPos++;
+		
+		EnergyDrink drink = new EnergyDrink(20,20+(yPos*80),200,75);
 		drink.setInfoBox(descriptionDisplay);
 		viewObjects.add(drink);
 		yPos++;
-		Coffee coffee = new Coffee(20,20+(yPos*65),200,75);
-		coffee.setInfoBox(descriptionDisplay);
-		viewObjects.add(coffee);
-
+		
+		Homework homework = new Homework(20,20+(yPos*80),200,75);
+		homework.setInfoBox(descriptionDisplay);
+		viewObjects.add(homework);
+		yPos++;
+		
+		StudyGuide study = new StudyGuide(20,20+(yPos*80),200,75);
+		study.setInfoBox(descriptionDisplay);
+		viewObjects.add(study);
+		yPos++;
+		
+		Test exam = new Test(20,20+(yPos*80),200,75);
+		exam.setInfoBox(descriptionDisplay);
+		viewObjects.add(exam);
+		yPos++;
 	}
 	
 	protected void defaultWhenNothingHovered() {
