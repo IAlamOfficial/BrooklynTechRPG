@@ -33,10 +33,10 @@ public class TechGame extends GUIApplication {
 	 */
 	@Override
 	public void initScreen() {
-		//invScreen = new InventoryScreen(getWidth(),getHeight());
-		//setScreen(invScreen);
-		menuScreen = new MenuScreen(getWidth(),getHeight());
-		setScreen(menuScreen);
+		invScreen = new InventoryScreen(getWidth(),getHeight());
+		setScreen(invScreen);
+//		menuScreen = new MenuScreen(getWidth(),getHeight());
+//		setScreen(menuScreen);
 	}
 
 	/**
