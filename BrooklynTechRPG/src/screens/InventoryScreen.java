@@ -2,6 +2,7 @@ package screens;
 
 import java.util.List;
 
+import guiTeacher.components.Button;
 import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
@@ -17,6 +18,7 @@ public class InventoryScreen extends FullFunctionScreen {
 
 	private int yPos = 0;
 	private InfoBox descriptionDisplay;
+	private Button exitInv;
 
 	public InventoryScreen(int width, int height) {
 		super(width, height);

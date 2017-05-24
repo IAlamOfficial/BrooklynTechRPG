@@ -35,7 +35,7 @@ public class TechGame extends GUIApplication {
 	public void initScreen() {
 		invScreen = new InventoryScreen(getWidth(),getHeight());
 		setScreen(invScreen);
-//		menuScreen = new MenuScreen(getWidth(),getHeight());
+		menuScreen = new MenuScreen(getWidth(),getHeight());
 //		setScreen(menuScreen);
 	}
 

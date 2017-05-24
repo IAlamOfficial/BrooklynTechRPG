@@ -29,7 +29,7 @@ public abstract class Item extends Component implements Clickable {
 		super(x, y, w, h);
 		graphic = new Graphic(0,0,h,h,imageLocation);
 		label = new TextLabel(h,0,w-h,25,"");
-		qtylabel = new TextLabel(w-20,0,w-h-15,25,""+quantity);
+		qtylabel = new TextLabel(w-10,0,w-h-15,25,""+quantity);
 	
 	}
 
