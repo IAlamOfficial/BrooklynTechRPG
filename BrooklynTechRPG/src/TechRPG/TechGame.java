@@ -6,6 +6,7 @@ package TechRPG;
 import guiTeacher.GUIApplication;
 import player.Player;
 import screens.InventoryScreen;
+import screens.MenuScreen;
 
 /**
  * @author Ryan Situ
@@ -14,6 +15,7 @@ import screens.InventoryScreen;
 public class TechGame extends GUIApplication {
 	
 	private static InventoryScreen invScreen;
+	private static MenuScreen menuScreen;
 	private static Player player;
 
 	/**
@@ -31,9 +33,10 @@ public class TechGame extends GUIApplication {
 	 */
 	@Override
 	public void initScreen() {
-		invScreen = new InventoryScreen(getWidth(),getHeight());
-		setScreen(invScreen);
-
+		//invScreen = new InventoryScreen(getWidth(),getHeight());
+		//setScreen(invScreen);
+		menuScreen = new MenuScreen(getWidth(),getHeight());
+		setScreen(menuScreen);
 	}
 
 	/**
