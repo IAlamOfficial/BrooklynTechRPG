@@ -43,7 +43,7 @@ public class TechGame extends GUIApplication {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		TechGame trpg = new TechGame(800,500);
+		TechGame trpg = new TechGame(1000,760);
 		Thread game = new Thread(trpg);
 		game.start();
 	}
