@@ -14,9 +14,10 @@ import screens.MenuScreen;
  */
 public class TechGame extends GUIApplication {
 	
-	private static InventoryScreen invScreen;
-	private static MenuScreen menuScreen;
-	private static Player player;
+	public static TechGame trpg;
+	public static MenuScreen menuScreen;
+	public static InventoryScreen invScreen;
+	public static Player player;
 
 	/**
 	 * @param width
@@ -33,17 +34,19 @@ public class TechGame extends GUIApplication {
 	 */
 	@Override
 	public void initScreen() {
-		invScreen = new InventoryScreen(getWidth(),getHeight());
-		//setScreen(invScreen);
 		menuScreen = new MenuScreen(getWidth(),getHeight());
 		setScreen(menuScreen);
+		
+		invScreen = new InventoryScreen(getWidth(),getHeight());
+		//setScreen(invScreen);
+		
 	}
  
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		TechGame trpg = new TechGame(1000,760);
+		trpg = new TechGame(1000,760);
 		Thread game = new Thread(trpg);
 		game.start();
 	}

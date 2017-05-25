@@ -7,11 +7,14 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import TechRPG.TechGame;
+import guiTeacher.components.Action;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.StyledComponent;
 import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
+import screens.CustomButton;
 
 public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListener{
 
@@ -19,7 +22,7 @@ public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListe
 	private TextLabel title;
 	private TextLabel gameScreen;
 	private TextLabel helpScreen;
-	private TextLabel testScreen;
+	private CustomButton testScreen;
 	
 	public MenuScreen(int width, int height) {
 		super(width, height);
@@ -69,13 +72,12 @@ public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListe
 		viewObjects.add(gameScreen);
 		
 		
-		
 		helpScreen = new TextLabel(840, 150, getWidth(), 100, "Help");
-				try {
+		try {
 			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 			Font baseFont=font.deriveFont(30f);
-		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
 			helpScreen.setFont(baseFont);
 		} catch (FontFormatException e) {
 			// TODO Auto-generated catch block
@@ -85,6 +87,18 @@ public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListe
 			e.printStackTrace();
 		}
 		viewObjects.add(helpScreen);
+		
+		
+		
+		testScreen = new CustomButton(500, 150, WIDTH, HEIGHT, "test", new Action() {
+			@Override
+			public void act() {
+				TechGame.trpg.setScreen(TechGame.invScreen);
+			}
+		});
+		viewObjects.add(testScreen);
+		
+		
 	}
 
 	@Override
