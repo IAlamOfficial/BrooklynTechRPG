@@ -38,7 +38,7 @@ public class TechGame extends GUIApplication {
 		menuScreen = new MenuScreen(getWidth(),getHeight());
 		setScreen(menuScreen);
 	}
-
+ 
 	/**
 	 * @param args
 	 */

@@ -15,8 +15,12 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListener{
 
-	private TextLabel title;
 	private Graphic bitTech;
+	private TextLabel title;
+	private TextLabel gameScreen;
+	private TextLabel helpScreen;
+	private TextLabel testScreen;
+	
 	public MenuScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -24,9 +28,14 @@ public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListe
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		title = new CenterTextLabel(0, 50, getWidth(), 50, "Brooklyn   Tech   The   RPG");
+		bitTech = new Graphic(0,0,"resources/BitTech.jpg");
+		bitTech.setX((getWidth()-bitTech.getWidth())/2);
+		viewObjects.add(bitTech);
 		
-		try {
+		
+		
+		title = new CenterTextLabel(0, 25, getWidth(), 50, "Brooklyn   Tech   The   RPG");
+				try {
 			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 			Font baseFont=font.deriveFont(48f);
@@ -39,12 +48,43 @@ public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListe
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-		
-		bitTech = new Graphic(0,0,"resources/BitTech.jpg");
-		bitTech.setX((getWidth()-bitTech.getWidth())/2);
-		viewObjects.add(bitTech);
 		viewObjects.add(title);
+		
+		
+		
+		gameScreen = new TextLabel(100, 150, getWidth(), 100, "Start Game");
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(30f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			gameScreen.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		viewObjects.add(gameScreen);
+		
+		
+		
+		helpScreen = new TextLabel(840, 150, getWidth(), 100, "Help");
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(30f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			helpScreen.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		viewObjects.add(helpScreen);
 	}
 
 	@Override
