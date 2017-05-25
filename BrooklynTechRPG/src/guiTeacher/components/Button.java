@@ -92,6 +92,10 @@ public class Button extends TextLabel implements Clickable{
 		super.update();
 	}
 	
+	public void drawBorder(Graphics2D g, boolean hover){
+		g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, curveX, curveY);
+	}
+	
 	
 	public void drawButton(Graphics2D g, boolean hover){
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
@@ -107,13 +111,13 @@ public class Button extends TextLabel implements Clickable{
 			clear();
 		}
 		g.setColor(Color.BLACK);
-		g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, curveX, curveY);
+		drawBorder(g,hover);
 		g.setColor(getForeground());
 		g.setFont(getFont());
 		FontMetrics fm = g.getFontMetrics();
 		
 		if(getText()!= null){
-			g.setColor(Color.white);
+//			g.setColor(Color.white);
 			String t = getText();
 			//just in case text is too wide, cut off
 			int cutoff = t.length();

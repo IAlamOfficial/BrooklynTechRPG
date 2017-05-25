@@ -20,8 +20,8 @@ public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListe
 
 	private Graphic bitTech;
 	private TextLabel title;
-	private TextLabel gameScreen;
-	private TextLabel helpScreen;
+	private CustomButton gameScreen;
+	private CustomButton helpScreen;
 	private CustomButton testScreen;
 	
 	public MenuScreen(int width, int height) {
@@ -55,7 +55,12 @@ public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListe
 		
 		
 		
-		gameScreen = new TextLabel(100, 150, getWidth(), 100, "Start Game");
+		gameScreen = new CustomButton(100, 150, 200, 100, "Start Game", new Action() {
+			@Override
+			public void act() {
+				TechGame.trpg.setScreen(TechGame.invScreen);
+			}
+		}); 
 				try {
 			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -72,7 +77,12 @@ public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListe
 		viewObjects.add(gameScreen);
 		
 		
-		helpScreen = new TextLabel(840, 150, getWidth(), 100, "Help");
+		helpScreen = new CustomButton(800, 150, 150, 100, "Help", new Action() {
+			@Override
+			public void act() {
+				TechGame.trpg.setScreen(TechGame.invScreen);
+			}
+		});
 		try {
 			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
