@@ -15,7 +15,10 @@ import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 import screens.CustomButton;
-
+/**
+ * @author Matthew Nguyen
+ *
+ */
 public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListener{
 
 	private Graphic bitTech;
