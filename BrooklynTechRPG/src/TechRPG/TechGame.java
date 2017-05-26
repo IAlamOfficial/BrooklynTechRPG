@@ -5,6 +5,7 @@ package TechRPG;
 
 import guiTeacher.GUIApplication;
 import player.Player;
+import screens.HelpScreen;
 import screens.InventoryScreen;
 import screens.MenuScreen;
 
@@ -16,6 +17,7 @@ public class TechGame extends GUIApplication {
 	
 	public static TechGame trpg;
 	public static MenuScreen menuScreen;
+	public static HelpScreen helpScreen;
 	public static InventoryScreen invScreen;
 	public static Player player;
 
@@ -39,6 +41,9 @@ public class TechGame extends GUIApplication {
 		
 		invScreen = new InventoryScreen(getWidth(),getHeight());
 		//setScreen(invScreen);
+		
+		helpScreen = new HelpScreen(getWidth(),getHeight());
+		//setScreen(helpScreen);
 		
 	}
  

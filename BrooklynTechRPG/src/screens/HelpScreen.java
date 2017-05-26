@@ -19,15 +19,15 @@ import screens.CustomButton;
  * @author Matthew Nguyen
  *
  */
-public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListener{
+public class HelpScreen extends FullFunctionScreen implements Runnable, KeyListener{
 
 	private Graphic bitTech;
+	private Graphic rectangleBlur;
 	private TextLabel title;
-	private CustomButton gameScreen;
-	private CustomButton helpScreen;
-	private CustomButton testScreen;
+	private CustomButton menuScreen;
+	private TextLabel description;
 	
-	public MenuScreen(int width, int height) {
+	public HelpScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
 	}
@@ -38,9 +38,11 @@ public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListe
 		bitTech.setX((getWidth()-bitTech.getWidth())/2);
 		viewObjects.add(bitTech);
 		
+		rectangleBlur = new Graphic(0,300,"resources/RectangleBlur.png");
+		rectangleBlur.setX((getWidth()-rectangleBlur.getWidth())/2);
+		viewObjects.add(rectangleBlur);
 		
-		
-		title = new CenterTextLabel(0, 25, getWidth(), 50, "Brooklyn   Tech   The   RPG");
+		title = new CenterTextLabel(0, 25, getWidth(), 50, "RPG   Help");
 				try {
 			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -58,10 +60,10 @@ public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListe
 		
 		
 		
-		gameScreen = new CustomButton(100, 150, 200, 100, "Start Game", new Action() {
+		menuScreen = new CustomButton(100, 150, 200, 100, "Return", new Action() {
 			@Override
 			public void act() {
-				TechGame.trpg.setScreen(TechGame.invScreen);
+				TechGame.trpg.setScreen(TechGame.menuScreen);
 			}
 		}); 
 				try {
@@ -69,7 +71,7 @@ public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListe
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 			Font baseFont=font.deriveFont(30f);
 		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
-			gameScreen.setFont(baseFont);
+			menuScreen.setFont(baseFont);
 		} catch (FontFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -77,21 +79,16 @@ public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListe
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		viewObjects.add(gameScreen);
+		viewObjects.add(menuScreen);
 		
 		
-		helpScreen = new CustomButton(800, 150, 150, 100, "Help", new Action() {
-			@Override
-			public void act() {
-				TechGame.trpg.setScreen(TechGame.helpScreen);
-			}
-		});
-		try {
+		description = new TextLabel(125, 400, 750, 50, "Text where help information is placed asdfasdfasdfa asdfasdfasdf asdfasdfasdf asdfasdfasdf asdfasdfasdf");
+				try {
 			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
-			Font baseFont=font.deriveFont(30f);
-			//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
-			helpScreen.setFont(baseFont);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			description.setFont(baseFont);
 		} catch (FontFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -99,18 +96,7 @@ public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListe
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		viewObjects.add(helpScreen);
-		
-		
-		
-		testScreen = new CustomButton(500, 150, WIDTH, HEIGHT, "test", new Action() {
-			@Override
-			public void act() {
-				TechGame.trpg.setScreen(TechGame.invScreen);
-			}
-		});
-		viewObjects.add(testScreen);
-		
+		viewObjects.add(description);
 		
 	}
 
