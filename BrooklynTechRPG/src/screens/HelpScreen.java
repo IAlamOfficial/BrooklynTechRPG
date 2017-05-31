@@ -11,6 +11,7 @@ import TechRPG.TechGame;
 import guiTeacher.components.Action;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.StyledComponent;
+import guiTeacher.components.TextArea;
 import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
@@ -25,7 +26,7 @@ public class HelpScreen extends FullFunctionScreen implements Runnable, KeyListe
 	private Graphic rectangleBlur;
 	private TextLabel title;
 	private CustomButton menuScreen;
-	private TextLabel description;
+	private TextArea description;
 	
 	public HelpScreen(int width, int height) {
 		super(width, height);
@@ -82,8 +83,10 @@ public class HelpScreen extends FullFunctionScreen implements Runnable, KeyListe
 		viewObjects.add(menuScreen);
 		
 		
-		description = new TextLabel(125, 400, 750, 50, "Text where help information is placed asdfasdfasdfa asdfasdfasdf asdfasdfasdf asdfasdfasdf asdfasdfasdf");
-				try {
+		description = new TextArea(125, 400, 750, 100, "Text where help information is placed\n asdfasdfasdfa asdfasdfasdf asdfasdfasdf asdfasdfasdf asdfasdfasdf");
+		description.setBorderThickness(3);
+		description.showBorder(true);
+		try {
 			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 			Font baseFont=font.deriveFont(20f);

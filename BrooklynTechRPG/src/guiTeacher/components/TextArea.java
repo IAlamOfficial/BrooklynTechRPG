@@ -18,23 +18,45 @@
  *******************************************************************************/
 package guiTeacher.components;
 
+import java.awt.BasicStroke;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
+import java.awt.Stroke;
 
 public class TextArea extends TextLabel {
 
+	private boolean showBorder;
+	private int borderThickness;
+	
 	public TextArea(int x, int y, int w, int h, String text) {
 		super(x, y, w, h, text);
-
+		showBorder = false;
+		borderThickness = 1;
 	}
 
+	public void showBorder(boolean b){
+		showBorder = b;
+		update();
+	}
+	
+	public void setBorderThickness(int x){
+		borderThickness = x;
+		update();
+	}
+	
 	public void update(Graphics2D g){
 		clear();
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		g.setFont(getFont());
 		FontMetrics fm = g.getFontMetrics();
 		g.setColor(getTextColor());
+		if(showBorder){
+			Stroke old = g.getStroke();
+			g.setStroke(new BasicStroke(borderThickness));
+			g.drawRect(borderThickness/2, borderThickness/2, getWidth()-3*borderThickness/2, getHeight()-3*borderThickness/2);
+			g.setStroke(old);
+		}
 		if(getText() != null){
 			String[] paragraphs = getText().split("\n");
 			final int SPACING = 2;
@@ -46,12 +68,12 @@ public class TextArea extends TextLabel {
 					String line = "";
 					//				i++;
 					while(i < words.length){
-						while(i < words.length && fm.stringWidth(line) + fm.stringWidth(words[i]) < getWidth()){
+						while(i < words.length && fm.stringWidth(line) + fm.stringWidth(words[i]) < getWidth()-borderThickness){
 							line += words[i]+" ";
 							i++;
 						}
 						if(y < getHeight()){
-							g.drawString(line, 2, y);
+							g.drawString(line, borderThickness+2, y);
 							y += fm.getDescent() + fm.getHeight()+SPACING;
 							line = "";
 						}else{
