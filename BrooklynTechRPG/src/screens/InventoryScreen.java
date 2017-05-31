@@ -1,7 +1,13 @@
 package screens;
 
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import TechRPG.TechGame;
+import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
@@ -19,6 +25,7 @@ public class InventoryScreen extends FullFunctionScreen {
 	private int yPos = 0;
 	private InfoBox descriptionDisplay;
 	private Button exitInv;
+	private CustomButton menuScreen;
 
 	public InventoryScreen(int width, int height) {
 		super(width, height);
@@ -59,6 +66,27 @@ public class InventoryScreen extends FullFunctionScreen {
 		exam.setInfoBox(descriptionDisplay);
 		viewObjects.add(exam);
 		yPos++;
+		
+		menuScreen = new CustomButton(500, 150, 200, 100, "Return", new Action() {
+			@Override
+			public void act() {
+				TechGame.trpg.setScreen(TechGame.menuScreen);
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(30f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			menuScreen.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		viewObjects.add(menuScreen);
 	}
 	
 	protected void defaultWhenNothingHovered() {
