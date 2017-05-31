@@ -83,7 +83,7 @@ public class HelpScreen extends FullFunctionScreen implements Runnable, KeyListe
 		viewObjects.add(menuScreen);
 		
 		
-		description = new TextArea(125, 400, 750, 100, "Text where help information is placed\n asdfasdfasdfa asdfasdfasdf asdfasdfasdf asdfasdfasdf asdfasdfasdf");
+		description = new TextArea(125, 320, 750, 400, "In this RPG, there are many items and stats that will help progress you through the game.  Stats can raise or fall and items can be bought or used.");
 		description.setBorderThickness(3);
 		description.showBorder(true);
 		try {
