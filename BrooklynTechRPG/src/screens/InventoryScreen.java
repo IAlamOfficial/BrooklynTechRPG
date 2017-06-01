@@ -9,6 +9,7 @@ import java.util.List;
 import TechRPG.TechGame;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
+import guiTeacher.components.Graphic;
 import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
@@ -26,6 +27,7 @@ public class InventoryScreen extends FullFunctionScreen {
 	private InfoBox descriptionDisplay;
 	private Button exitInv;
 	private CustomButton menuScreen;
+	private Graphic invbg;
 
 	public InventoryScreen(int width, int height) {
 		super(width, height);
@@ -34,35 +36,39 @@ public class InventoryScreen extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		invbg = new Graphic(0,0,"resources/inventorybackground.png");
+		invbg.setX((getWidth()-invbg.getWidth())/2);
+		viewObjects.add(invbg);
+		
 		descriptionDisplay = new InfoBox(250, 50, 300, 300, "");
 		viewObjects.add(descriptionDisplay);
 		
-		SampleItem test = new SampleItem(20,20+(yPos*80),200,75);
+		SampleItem test = new SampleItem(120,90+(yPos*80),200,75);
 		test.setInfoBox(descriptionDisplay);
 		viewObjects.add(test);
 		yPos++;
 		
-		Coffee coffee = new Coffee(20,20+(yPos*80),200,75);
+		Coffee coffee = new Coffee(120,90+(yPos*80),200,75);
 		coffee.setInfoBox(descriptionDisplay);
 		viewObjects.add(coffee);
 		yPos++;
 		
-		EnergyDrink drink = new EnergyDrink(20,20+(yPos*80),200,75);
+		EnergyDrink drink = new EnergyDrink(120,90+(yPos*80),200,75);
 		drink.setInfoBox(descriptionDisplay);
 		viewObjects.add(drink);
 		yPos++;
 		
-		Homework homework = new Homework(20,20+(yPos*80),200,75);
+		Homework homework = new Homework(120,90+(yPos*80),200,75);
 		homework.setInfoBox(descriptionDisplay);
 		viewObjects.add(homework);
 		yPos++;
 		
-		StudyGuide study = new StudyGuide(20,20+(yPos*80),200,75);
+		StudyGuide study = new StudyGuide(120,90+(yPos*80),200,75);
 		study.setInfoBox(descriptionDisplay);
 		viewObjects.add(study);
 		yPos++;
 		
-		Test exam = new Test(20,20+(yPos*80),200,75);
+		Test exam = new Test(120,90+(yPos*80),200,75);
 		exam.setInfoBox(descriptionDisplay);
 		viewObjects.add(exam);
 		yPos++;
