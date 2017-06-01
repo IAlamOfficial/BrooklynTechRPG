@@ -8,6 +8,7 @@ import player.Player;
 import screens.ClassroomScreen;
 import screens.HallwayScreen;
 import screens.HelpScreen;
+import screens.HomeScreen;
 import screens.InventoryScreen;
 import screens.MenuScreen;
 
@@ -23,6 +24,7 @@ public class TechGame extends GUIApplication {
 	public static InventoryScreen invScreen;
 	public static ClassroomScreen classroomScreen;
 	public static HallwayScreen hallwayScreen;
+	public static HomeScreen homeScreen;
 	public static Player player;
 
 	/**
@@ -41,7 +43,7 @@ public class TechGame extends GUIApplication {
 	@Override
 	public void initScreen() {
 		menuScreen = new MenuScreen(getWidth(),getHeight());
-//		setScreen(menuScreen);
+		setScreen(menuScreen);
 		
 		invScreen = new InventoryScreen(getWidth(),getHeight());
 		//setScreen(invScreen);
@@ -53,7 +55,12 @@ public class TechGame extends GUIApplication {
 		//setScreen(classroomScreen);
 		
 		hallwayScreen = new HallwayScreen(getWidth(),getHeight());
-		setScreen(hallwayScreen);
+		//setScreen(hallwayScreen);
+		
+		homeScreen = new HomeScreen(getWidth(),getHeight());
+		//setScreen(homeScreen);
+		
+		
 		
 	}
  
