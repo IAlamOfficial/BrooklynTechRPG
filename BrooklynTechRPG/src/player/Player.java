@@ -1,5 +1,7 @@
 package player;
 
+import items.Item;
+
 public class Player {
 
 	/*
@@ -13,17 +15,20 @@ public class Player {
 	private int strength;
 	private int time;
 	private int rep;
-	private int social;
+	private double social;
+	private Item[] itm;
 	
 	public Player() {
 		level = 0;
 		knowledgePoints = 0;
-		money = 0.0;
+		money = 10.0;
 		energy = 0;
-		strength = 0;
+		strength = 9;
 		time = 0;
 		rep = 0;
-		social = 0;
+		social = 1.0;
+		
+//		itm = {new AlarmClock()};
 	}
 	
 	public int getLevel() {
@@ -82,11 +87,11 @@ public class Player {
 		this.rep += rep;
 	}
 
-	public int getSocial() {
+	public double getSocial() {
 		return social;
 	}
 
-	public void setSocial(int social) {
+	public void setSocial(double social) {
 		this.social += social;
 	}
 

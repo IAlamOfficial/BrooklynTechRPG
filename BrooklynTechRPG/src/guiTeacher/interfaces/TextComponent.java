@@ -21,6 +21,7 @@ package guiTeacher.interfaces;
 public interface TextComponent extends Visible{
 
 	String getText();
+	void setText(String text);
 	boolean isEditable();
 	void setEditable(boolean b);
 }
