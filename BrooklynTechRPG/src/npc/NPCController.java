@@ -7,6 +7,7 @@ import java.awt.event.KeyListener;
 import guiTeacher.components.Component;
 import guiTeacher.interfaces.KeyedComponent;
 import player.Player;
+import screens.InventoryScreen;
 
 public class NPCController extends Component implements KeyedComponent {
 
@@ -27,8 +28,14 @@ public class NPCController extends Component implements KeyedComponent {
 				boolean result = b.fight(p.getStrength());
 				event.beatBully(result);
 			}
+			if(event.getNPC() instanceof Merchant){
+				
+				Merchant m = (Merchant)event.getNPC();
+				event.purchaseItem(InventoryScreen.coffee);
+			}
 		}
 	}
+
 
 	@Override
 	public void keyReleased(KeyEvent k) {

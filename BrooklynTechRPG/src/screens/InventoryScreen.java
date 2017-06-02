@@ -30,7 +30,13 @@ public class InventoryScreen extends FullFunctionScreen {
 	private CustomButton menuScreen;
 	private Graphic invbg;
 	private TextLabel title;
-
+	public static SampleItem test;
+	public static Coffee coffee;
+	public static EnergyDrink drink;
+	public static Homework homework;
+	public static StudyGuide study;
+	public static Test exam;
+	
 	public InventoryScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -61,32 +67,32 @@ public class InventoryScreen extends FullFunctionScreen {
 		descriptionDisplay = new InfoBox(400, 250, 300, 300, "");
 		viewObjects.add(descriptionDisplay);
 		
-		SampleItem test = new SampleItem(120,90+(yPos*80),200,75);
+		test = new SampleItem(120,90+(yPos*80),200,75);
 		test.setInfoBox(descriptionDisplay);
 		viewObjects.add(test);
 		yPos++;
 		
-		Coffee coffee = new Coffee(120,90+(yPos*80),200,75);
+		coffee = new Coffee(120,90+(yPos*80),200,75);
 		coffee.setInfoBox(descriptionDisplay);
 		viewObjects.add(coffee);
 		yPos++;
 		
-		EnergyDrink drink = new EnergyDrink(120,90+(yPos*80),200,75);
+		drink = new EnergyDrink(120,90+(yPos*80),200,75);
 		drink.setInfoBox(descriptionDisplay);
 		viewObjects.add(drink);
 		yPos++;
 		
-		Homework homework = new Homework(120,90+(yPos*80),200,75);
+		homework = new Homework(120,90+(yPos*80),200,75);
 		homework.setInfoBox(descriptionDisplay);
 		viewObjects.add(homework);
 		yPos++;
 		
-		StudyGuide study = new StudyGuide(120,90+(yPos*80),200,75);
+		study = new StudyGuide(120,90+(yPos*80),200,75);
 		study.setInfoBox(descriptionDisplay);
 		viewObjects.add(study);
 		yPos++;
 		
-		Test exam = new Test(120,90+(yPos*80),200,75);
+		exam = new Test(120,90+(yPos*80),200,75);
 		exam.setInfoBox(descriptionDisplay);
 		viewObjects.add(exam);
 		yPos++;
