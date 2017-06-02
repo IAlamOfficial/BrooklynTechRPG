@@ -61,7 +61,7 @@ public class MenuScreen extends FullFunctionScreen implements Runnable, KeyListe
 		gameScreen = new CustomButton(100, 150, 200, 100, "Start Game", new Action() {
 			@Override
 			public void act() {
-				TechGame.trpg.setScreen(TechGame.invScreen);
+				TechGame.trpg.setScreen(TechGame.hallwayScreen);
 			}
 		}); 
 				try {
