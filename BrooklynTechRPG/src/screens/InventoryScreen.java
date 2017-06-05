@@ -67,32 +67,32 @@ public class InventoryScreen extends FullFunctionScreen {
 		descriptionDisplay = new InfoBox(400, 250, 300, 300, "");
 		viewObjects.add(descriptionDisplay);
 		
-		test = new SampleItem(120,90+(yPos*80),200,75);
+		test = new SampleItem(120,90+(yPos*80),200,75, 0);
 		test.setInfoBox(descriptionDisplay);
 		viewObjects.add(test);
 		yPos++;
 		
-		coffee = new Coffee(120,90+(yPos*80),200,75);
+		coffee = new Coffee(120,90+(yPos*80),200,75, 0);
 		coffee.setInfoBox(descriptionDisplay);
 		viewObjects.add(coffee);
 		yPos++;
 		
-		drink = new EnergyDrink(120,90+(yPos*80),200,75);
+		drink = new EnergyDrink(120,90+(yPos*80),200,75, 0);
 		drink.setInfoBox(descriptionDisplay);
 		viewObjects.add(drink);
 		yPos++;
 		
-		homework = new Homework(120,90+(yPos*80),200,75);
+		homework = new Homework(120,90+(yPos*80),200,75, 0);
 		homework.setInfoBox(descriptionDisplay);
 		viewObjects.add(homework);
 		yPos++;
 		
-		study = new StudyGuide(120,90+(yPos*80),200,75);
+		study = new StudyGuide(120,90+(yPos*80),200,75, 0);
 		study.setInfoBox(descriptionDisplay);
 		viewObjects.add(study);
 		yPos++;
 		
-		exam = new Test(120,90+(yPos*80),200,75);
+		exam = new Test(120,90+(yPos*80),200,75, 0);
 		exam.setInfoBox(descriptionDisplay);
 		viewObjects.add(exam);
 		yPos++;

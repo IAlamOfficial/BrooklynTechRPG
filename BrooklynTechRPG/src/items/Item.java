@@ -24,13 +24,16 @@ public abstract class Item extends Component implements Clickable {
 	private int quantity;
 	private Action action;
 	private InfoBox infobox;
-
-	public Item(int x, int y, int w, int h, String imageLocation) {
-		super(x, y, w, h);
-		graphic = new Graphic(0,0,h,h,imageLocation);
-		label = new TextLabel(h,0,w-h,25,"");
-		qtylabel = new TextLabel(w-10,0,w-h-15,25,""+quantity);
 	
+	public static final int ITEM_WIDTH = 300;
+	public static final int ITEM_HEIGHT = 80;
+
+	public Item(int x, int y, String imageLocation, int qty) {
+		super(x, y, ITEM_WIDTH, ITEM_HEIGHT);
+		graphic = new Graphic(0,0,ITEM_HEIGHT,ITEM_HEIGHT,imageLocation);
+		label = new TextLabel(ITEM_HEIGHT,0,ITEM_WIDTH-ITEM_HEIGHT,25,"");
+		qtylabel = new TextLabel(ITEM_WIDTH-10,0,ITEM_WIDTH-ITEM_HEIGHT-15,25,""+quantity);
+		qty = 0;
 	}
 
 	public void setInfoBox(InfoBox infobox){

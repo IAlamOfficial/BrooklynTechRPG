@@ -1,5 +1,10 @@
 package player;
 
+import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
+
+import javax.swing.ImageIcon;
+
 import items.Item;
 
 public class Player {
@@ -7,7 +12,7 @@ public class Player {
 	/*
 	 * Player stats 
 	 */
-	
+
 	private int level;
 	private int knowledgePoints;
 	private double money;
@@ -17,7 +22,12 @@ public class Player {
 	private int rep;
 	private double social;
 	private Item[] itm;
-	
+
+	private int xPos;
+	private int yPos;
+	private int dx;
+	private int dy;
+
 	public Player() {
 		level = 0;
 		knowledgePoints = 0;
@@ -27,10 +37,62 @@ public class Player {
 		time = 0;
 		rep = 0;
 		social = 1.0;
-		
-//		itm = {new AlarmClock()};
+		initPlayer();
+
+		//		itm = {new AlarmClock()};
+	}
+
+	public void update(Graphics2D g) {
+		String[] playerMovement = {"resources/playerup","resources/playerdown",
+				"resources/playerleft","resources/playerright"};
 	}
 	
+	public void initPlayer(){
+		ImageIcon player = new ImageIcon("resources/playerup");
+	}
+
+	public void keyPressed(KeyEvent e) {
+
+		int key = e.getKeyCode();
+
+		if (key == KeyEvent.VK_LEFT) {
+			dx = -1;
+		}
+
+		if (key == KeyEvent.VK_RIGHT) {
+			dx = 1;
+		}
+
+		if (key == KeyEvent.VK_UP) {
+			dy = -1;
+		}
+
+		if (key == KeyEvent.VK_DOWN) {
+			dy = 1;
+		}
+	}
+
+	public void keyReleased(KeyEvent e) {
+
+		int key = e.getKeyCode();
+
+		if (key == KeyEvent.VK_LEFT) {
+			dx = 0;
+		}
+
+		if (key == KeyEvent.VK_RIGHT) {
+			dx = 0;
+		}
+
+		if (key == KeyEvent.VK_UP) {
+			dy = 0;
+		}
+
+		if (key == KeyEvent.VK_DOWN) {
+			dy = 0;
+		}
+	}
+
 	public int getLevel() {
 		return level;
 	}
@@ -95,6 +157,6 @@ public class Player {
 		this.social += social;
 	}
 
-	
+
 
 }
