@@ -18,11 +18,15 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 	
 	private Graphic hallwaybg;//screen 0
 	private Graphic classroombg;//screen 1
-	private int currentScreen = -1;
-	private int numberOfEntries = 0;
-	private TextArea intro;
-	private CustomButton menuScreen;
-	private CustomButton classRoomButton;
+	private int currentScreen;
+	private int numberOfEntries;
+	private TextArea textBox;
+	private CustomButton hwMenuScreenButton;
+	private CustomButton hwClassRoomButton;
+	private CustomButton crMenuScreenButton;
+	private CustomButton crHallwayButton;
+	private String text;
+			
 	
 	public HallwayScreen(int width, int height) {
 		super(width, height);
@@ -37,32 +41,16 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		hallwaybg = new Graphic(0,0,"resources/hallwayimproved.png");
-		hallwaybg.setX((getWidth()-hallwaybg.getWidth())/2);
-		viewObjects.add(hallwaybg);
-		
-		intro = new TextArea(250, 100, 500, 100, "Welcome to Brooklyn Tech, this is where you will be spending the next 4 years of your life, learning many new things and making new friends.");
-		//intro.setBorderThickness(3);
-		intro.showBorder(false);
-		try {
-			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
-			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
-			Font baseFont=font.deriveFont(15f);
-		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
-			intro.setFont(baseFont);
-		} catch (FontFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		currentScreen = -1;
 		if(numberOfEntries == 0){
-			viewObjects.add(intro);
+			currentScreen = 0;
+			text = "Welcome to Brooklyn Tech, this is where you will be spending the next 4 years of your life, learning many new things and making new friends.";
 			numberOfEntries++;
 		}
-				
-		menuScreen = new CustomButton(250, 60, 100, 30, "Return", new Action() {
+		hallwaybg = new Graphic(0,0,"resources/hallwayimproved.png");
+		hallwaybg.setX((getWidth()-hallwaybg.getWidth())/2);
+		
+		hwMenuScreenButton = new CustomButton(250, 60, 100, 30, "Return", new Action() {
 			@Override
 			public void act() {
 				TechGame.trpg.setScreen(TechGame.menuScreen);
@@ -73,7 +61,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 			Font baseFont=font.deriveFont(20f);
 		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
-			menuScreen.setFont(baseFont);
+			hwMenuScreenButton.setFont(baseFont);
 		} catch (FontFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -81,17 +69,12 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		viewObjects.add(menuScreen);
 		
-		
-		
-		classroombg = new Graphic(0,0,"resources/classroom.png");
-		classroombg.setX((getWidth()-classroombg.getWidth())/2);
-				
-		classRoomButton = new CustomButton(360, 60, 115, 30, "Classroom", new Action() {
+		hwClassRoomButton = new CustomButton(360, 60, 115, 30, "Classroom", new Action() {
 			@Override
 			public void act() {
-				viewObjects.add(classroombg);
+				currentScreen = 1;
+				goToClassroom();
 			}
 		}); 
 				try {
@@ -99,7 +82,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 			Font baseFont=font.deriveFont(20f);
 		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
-			classRoomButton.setFont(baseFont);
+			hwClassRoomButton.setFont(baseFont);
 		} catch (FontFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -107,8 +90,103 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		viewObjects.add(classRoomButton);
-		//viewObjects.add(classroombg);
+				
+		textBox = new TextArea(250, 100, 500, 100, text);
+		//intro.setBorderThickness(3);
+		textBox.showBorder(false);
+		try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(15f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			textBox.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		classroombg = new Graphic(0,0,"resources/classroom.png");
+		classroombg.setX((getWidth()-classroombg.getWidth())/2);
+		crMenuScreenButton = new CustomButton(450, 60, 100, 30, "Return", new Action() {
+			@Override
+			public void act() {
+				TechGame.trpg.setScreen(TechGame.menuScreen);
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			crMenuScreenButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		crHallwayButton = new CustomButton(560, 60, 115, 30, "Hallway", new Action() {
+			@Override
+			public void act() {
+				currentScreen = 0;
+				goToHallway(viewObjects);
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			crHallwayButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(currentScreen == 0){
+			viewObjects.add(hallwaybg);
+			viewObjects.add(hwMenuScreenButton);
+			viewObjects.add(hwClassRoomButton);
+			viewObjects.add(textBox);
+		}
+		if(currentScreen == 1){
+			viewObjects.add(classroombg);
+			viewObjects.add(crMenuScreenButton);
+			viewObjects.add(crHallwayButton);
+		}
+		
+	
+	}
+	public void goToHallway(List<Visible> viewObjects) {
+		addObject(hallwaybg);
+		addObject(hwMenuScreenButton);
+		addObject(textBox);
+		addObject(hwClassRoomButton);
+		
+		remove(classroombg);
+		remove(crMenuScreenButton);
+		remove(crHallwayButton);
+	}
+	public void goToClassroom() {
+		addObject(classroombg);
+		addObject(crMenuScreenButton);
+		addObject(crHallwayButton);
+		
+		remove(hallwaybg);
+		remove(hwMenuScreenButton);
+		remove(textBox);
+		remove(hwClassRoomButton);
 	}
 
 }
