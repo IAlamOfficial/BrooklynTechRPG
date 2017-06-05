@@ -21,21 +21,20 @@ public class Player {
 	private int time;
 	private int rep;
 	private double social;
-	private Item[] itm;
 
-	private int xPos;
-	private int yPos;
-	private int dx;
-	private int dy;
+	private int hw;
+	public Item[] itm;
+	
+	
 
 	public Player() {
 		level = 0;
 		knowledgePoints = 0;
 		money = 10.0;
-		energy = 0;
-		strength = 9;
-		time = 0;
-		rep = 0;
+		energy = 25;
+		strength = 5;
+		time = 10;
+		rep = 10;
 		social = 1.0;
 		initPlayer();
 
@@ -99,6 +98,7 @@ public class Player {
 
 	public void setLevel(int level) {
 		this.level += level;
+		if(this.level<0) this.level = 0;
 	}
 
 	public int getKnowledgePoints() {
@@ -107,6 +107,7 @@ public class Player {
 
 	public void setKnowledgePoints(int knowledgePoints) {
 		this.knowledgePoints += knowledgePoints;
+		if(this.knowledgePoints<0) this.knowledgePoints = 0;
 	}
 
 	public double getMoney() {
@@ -115,6 +116,7 @@ public class Player {
 
 	public void setMoney(double money) {
 		this.money += money;
+		if(this.money<0.0) this.money = 0.0;
 	}
 
 	public int getEnergy() {
@@ -123,6 +125,7 @@ public class Player {
 
 	public void setEnergy(int energy) {
 		this.energy += energy;
+		if(this.energy<0) this.energy = 0;
 	}
 
 	public int getStrength() {
@@ -131,6 +134,7 @@ public class Player {
 
 	public void setStrength(int strength) {
 		this.strength += strength;
+		if(this.strength<0) this.strength = 0;
 	}
 
 	public int getTime() {
@@ -139,6 +143,7 @@ public class Player {
 
 	public void setTime(int time) {
 		this.time += time;
+		if(this.time<0) this.time = 0;
 	}
 
 	public int getRep() {
@@ -147,6 +152,8 @@ public class Player {
 
 	public void setRep(int rep) {
 		this.rep += rep;
+		if(this.rep<0) this.rep = 0;
+		if(this.rep>50) this.rep = 50;
 	}
 
 	public double getSocial() {
@@ -155,6 +162,17 @@ public class Player {
 
 	public void setSocial(double social) {
 		this.social += social;
+		if(this.social<0.01) this.social = 0.01;
+	}
+
+	public int getHw() {
+		return hw;
+	}
+
+	public void setHw(int hw) {
+		this.hw += hw;
+		if(this.hw<0) this.hw = 0;
+		
 	}
 
 
