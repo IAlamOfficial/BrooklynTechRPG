@@ -6,6 +6,7 @@ import java.awt.event.KeyListener;
 
 import guiTeacher.components.Component;
 import guiTeacher.interfaces.KeyedComponent;
+import items.Item;
 import player.Player;
 import screens.InventoryScreen;
 
@@ -23,15 +24,27 @@ public class NPCController extends Component implements KeyedComponent {
 	@Override
 	public void keyPressed(KeyEvent k) {
 		if(k.getKeyCode()==KeyEvent.VK_Q){
-			if(event.getNPC() instanceof Bully){
+			if(event.getNPC() instanceof Bully && p.getEnergy() > 20){
+				p.setEnergy(-20);
 				Bully b = (Bully)event.getNPC();
 				boolean result = b.fight(p.getStrength());
 				event.beatBully(result);
+			}else{
+				event.couldNotFight();
 			}
-			if(event.getNPC() instanceof Merchant){
+			if(event.getNPC() instanceof Merchant ){
 				
-				Merchant m = (Merchant)event.getNPC();
+				//Merchant m = (Merchant)event.getNPC();
 				event.purchaseItem(InventoryScreen.coffee);
+			}else{
+				
+			}
+			if(event.getNPC() instanceof Faculty && p.getHw() > 0){
+				Faculty f = (Faculty)event.getNPC();
+				boolean result = f.collectHW(p);
+				event.returnHomework(result);
+			}else{
+				event.haveNoHomework();
 			}
 		}
 	}

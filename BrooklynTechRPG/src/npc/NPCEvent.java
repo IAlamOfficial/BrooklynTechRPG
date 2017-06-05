@@ -60,40 +60,84 @@ public class NPCEvent implements Runnable{
 	public void beatBully(boolean result) {
 
 		if(result){
-			String[] arr = {"You beat the bully!","You earned $5.00", "You have a total of " + p.getMoney()};
+			String[] arr = {"You beat the bully!","You earned $5.00", "You have a total of $" + p.getMoney()};
 			showText(arr, new Action() {
 				
 				@Override
 				public void act() {
-					NPCEvent.this.p.setMoney(5.00);
+					NPCEvent.this.p.setMoney(20.00);
+					NPCEvent.this.p.setRep(-5);
+					NPCEvent.this.p.setSocial(-0.6);
 				}
 			});
 		}
 		else{
-			String[] arr = {"You lost to the bully!","You lost $5.00", "You have a total of " + p.getMoney()};
+			String[] arr = {"You lost to the bully!","You lost $5.00", "You have a total of $" + p.getMoney()};
 			showText(arr, new Action() {
 				
 				@Override
 				public void act() {
 					NPCEvent.this.p.setMoney(-5.00);
+					NPCEvent.this.p.setSocial(0.1);
+					
 				}
 			});
 		}
 		
 	}
 	
+	public void couldNotFight() {
+		String[] arr = {"Sorry you do not have enough energy to fight the bully"};
+		showText(arr, null);
+		
+	}
+	
 	public void purchaseItem(Item item){
 		i = item;
-		String[] arr = {"You have purchased " + i.getName() + " for " + (i.getCost()*p.getSocial()), "You have a total of " + p.getMoney()};
+		String[] arr = {"You have purchased " + i.getName() + " for $" + (i.getCost()*p.getSocial()), "You have a total of $" + p.getMoney()};
 		showText(arr, new Action() {
 			
 			@Override
 			public void act() {
-				NPCEvent.this.p.setMoney((i.getCost()*p.getSocial())*-1);
-				NPCEvent.this.i.setQuantity(NPCEvent.this.i.getQuantity());
+				NPCEvent.this.p.setMoney((i.getCost()*p.getSocial())*(-1));
+				NPCEvent.this.i.setQuantity(NPCEvent.this.i.getQuantity()+1);
 				
 			}
 		});
 	}
+	
+	public void returnHomework(boolean result) {
+		if(!result){
+			String[] arr = {"You gave in the homework","You have recived 10 Knowledge points", "You have a total of " + p.getKnowledgePoints() + " knowledge points"};
+			showText(arr, new Action() {
 
+				@Override
+				public void act() {
+					NPCEvent.this.p.setKnowledgePoints(10);
+					NPCEvent.this.p.setRep(1);
+					
+					
+				}
+				
+			});
+		}else{
+			String[] arr = {"You got caught using someone else homework","You have lost 25 Knowledge points", "You have a total of " + p.getKnowledgePoints() + " knowledge points"};
+			showText(arr, new Action() {
+
+				@Override
+				public void act() {
+					NPCEvent.this.p.setKnowledgePoints(-25);
+					NPCEvent.this.p.setRep(-10);
+					
+				}
+			});	
+				
+		}
+		
+	}
+
+	public void haveNoHomework(){
+		String[] arr = {"You have no homework to give"};
+		showText(arr, null);
+	}
 }
