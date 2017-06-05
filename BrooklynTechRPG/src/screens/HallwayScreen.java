@@ -22,6 +22,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 	private int numberOfEntries = 0;
 	private TextArea intro;
 	private CustomButton menuScreen;
+	private CustomButton classRoomButton;
 	
 	public HallwayScreen(int width, int height) {
 		super(width, height);
@@ -60,12 +61,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			viewObjects.add(intro);
 			numberOfEntries++;
 		}
-		
-		classroombg = new Graphic(0,0,"resources/classroom.png");
-		classroombg.setX((getWidth()-classroombg.getWidth())/2);
-		viewObjects.add(classroombg);
-		
-		
+				
 		menuScreen = new CustomButton(250, 60, 100, 30, "Return", new Action() {
 			@Override
 			public void act() {
@@ -86,6 +82,34 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			e.printStackTrace();
 		}
 		viewObjects.add(menuScreen);
+		
+		
+		
+		classroombg = new Graphic(0,0,"resources/classroom.png");
+		classroombg.setX((getWidth()-classroombg.getWidth())/2);
+				
+		classRoomButton = new CustomButton(360, 60, 115, 30, "Classroom", new Action() {
+			@Override
+			public void act() {
+				viewObjects.add(classroombg);
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			classRoomButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		viewObjects.add(classRoomButton);
+		//viewObjects.add(classroombg);
 	}
 
 }
+
