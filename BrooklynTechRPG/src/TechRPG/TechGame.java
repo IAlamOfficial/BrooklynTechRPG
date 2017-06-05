@@ -38,7 +38,7 @@ public class TechGame extends GUIApplication {
 	}
 
 	/* (non-Javadoc)
-	 * @see guiTeacher.GUIApplication#initScreen()
+	 * @see guiTeacher.GUIApplication#initScreen(0)
 	 */
 	@Override
 	public void initScreen() {

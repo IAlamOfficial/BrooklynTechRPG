@@ -35,7 +35,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 		hallwaybg.setX((getWidth()-hallwaybg.getWidth())/2);
 		viewObjects.add(hallwaybg);
 		
-		intro = new TextArea(125, 500, 750, 60, "Welcome to Brooklyn Tech, this is where you will be spending the next 4 years of your life, learning many new things and making new friends.");
+		intro = new TextArea(125, 200, 750, 60, "Welcome to Brooklyn Tech, this is where you will be spending the next 4 years of your life, learning many new things and making new friends.");
 		intro.setBorderThickness(3);
 		intro.showBorder(true);
 		try {
