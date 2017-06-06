@@ -1,10 +1,12 @@
 package player;
 
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 
+import guiTeacher.components.Graphic;
 import items.Item;
 
 public class Player {
@@ -25,6 +27,11 @@ public class Player {
 	private int hw;
 	public Item[] itm;
 	
+	private int dx;
+	private int dy;
+	private int xPos;
+	private int yPos;
+	private Image image;
 	
 
 	public Player() {
@@ -48,6 +55,14 @@ public class Player {
 	
 	public void initPlayer(){
 		ImageIcon player = new ImageIcon("resources/playerup");
+		image = player.getImage();
+		xPos = 100;
+		yPos = 100;
+	}
+	
+	public void move(){
+		xPos+=dx;
+		yPos+=dy;
 	}
 
 	public void keyPressed(KeyEvent e) {
