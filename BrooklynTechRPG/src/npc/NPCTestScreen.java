@@ -24,7 +24,7 @@ public class NPCTestScreen extends FullFunctionScreen{
 	public void initAllObjects(List<Visible> viewObjects) {
 		bully = new Bully("Bully", 10);
 		mer = new Merchant("Merchant");
-		coffee = new Coffee(10,10,100,100);
+//		coffee = new Coffee(10,10,100,100);
 		
 		
 		TextArea area = new TextArea(50,50,300,200,"");

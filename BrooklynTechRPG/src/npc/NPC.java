@@ -8,7 +8,7 @@ public class NPC {
 	
 	public NPC(String name){
 		this.name = name;
-
+		talkCount = 0;
 	}
 	
 	public String getSpeech(){

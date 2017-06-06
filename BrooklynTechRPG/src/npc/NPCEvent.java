@@ -140,4 +140,12 @@ public class NPCEvent implements Runnable{
 		String[] arr = {"You have no homework to give"};
 		showText(arr, null);
 	}
+	public void couldNotPpurchase() {
+		String[] arr = {"Sorry you do not have enough money to purchase this item"};
+		showText(arr, null);
+		
+	}
+
+	
+	
 }

@@ -32,19 +32,27 @@ public class NPCController extends Component implements KeyedComponent {
 			}else{
 				event.couldNotFight();
 			}
+			
+			/*
+			 * condition where item cost is less than amount of money avalible
+			 */
 			if(event.getNPC() instanceof Merchant ){
 				
 				//Merchant m = (Merchant)event.getNPC();
 				event.purchaseItem(InventoryScreen.coffee);
 			}else{
-				
+				event.couldNotPpurchase();
 			}
+			
 			if(event.getNPC() instanceof Faculty && p.getHw() > 0){
 				Faculty f = (Faculty)event.getNPC();
 				boolean result = f.collectHW(p);
 				event.returnHomework(result);
 			}else{
 				event.haveNoHomework();
+			}
+			if(event.getNPC() instanceof HomeworkTable && p.getEnergy()>1 && p.getTime()>0){
+				
 			}
 		}
 	}
