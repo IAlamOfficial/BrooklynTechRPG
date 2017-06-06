@@ -46,6 +46,8 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			currentScreen = 0;
 			text = "Welcome to Brooklyn Tech, this is where you will be spending the next 4 years of your life, learning many new things and making new friends.";
 			numberOfEntries++;
+		}else{
+			text = "";
 		}
 		hallwaybg = new Graphic(0,0,"resources/hallwayimproved.png");
 		hallwaybg.setX((getWidth()-hallwaybg.getWidth())/2);
