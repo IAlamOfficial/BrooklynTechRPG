@@ -23,6 +23,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 	private TextArea textBox;
 	private CustomButton hwMenuScreenButton;
 	private CustomButton hwClassRoomButton;
+	private CustomButton hwInventoryButton;
 	private CustomButton crMenuScreenButton;
 	private CustomButton crHallwayButton;
 	private String text;
@@ -46,8 +47,6 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			currentScreen = 0;
 			text = "Welcome to Brooklyn Tech, this is where you will be spending the next 4 years of your life, learning many new things and making new friends.";
 			numberOfEntries++;
-		}else{
-			text = "";
 		}
 		hallwaybg = new Graphic(0,0,"resources/hallwayimproved.png");
 		hallwaybg.setX((getWidth()-hallwaybg.getWidth())/2);
@@ -92,7 +91,27 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
+		
+		hwInventoryButton = new CustomButton(400, 60, 115, 30, "Inventory", new Action() {
+			@Override
+			public void act() {
+				TechGame.trpg.setScreen(TechGame.menuScreen);
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			hwInventoryButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		textBox = new TextArea(250, 100, 500, 100, text);
 		//intro.setBorderThickness(3);
 		textBox.showBorder(false);
@@ -160,7 +179,9 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			viewObjects.add(hallwaybg);
 			viewObjects.add(hwMenuScreenButton);
 			viewObjects.add(hwClassRoomButton);
+			viewObjects.add(hwInventoryButton);
 			viewObjects.add(textBox);
+			
 		}
 		if(currentScreen == 1){
 			viewObjects.add(classroombg);
@@ -171,10 +192,13 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 	
 	}
 	public void goToHallway(List<Visible> viewObjects) {
+		text = "";
 		addObject(hallwaybg);
 		addObject(hwMenuScreenButton);
 		addObject(textBox);
 		addObject(hwClassRoomButton);
+		viewObjects.add(hwInventoryButton);
+		//textBox = TextArea(250, 100, 500, 100, text);
 		
 		remove(classroombg);
 		remove(crMenuScreenButton);
@@ -189,6 +213,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 		remove(hwMenuScreenButton);
 		remove(textBox);
 		remove(hwClassRoomButton);
+		remove(hwInventoryButton);
 	}
 
 }
