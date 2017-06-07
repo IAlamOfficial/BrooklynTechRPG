@@ -10,7 +10,7 @@ import guiTeacher.components.ClickableGraphic;
 import guiTeacher.interfaces.Clickable;
 import items.Item;
 
-public class Player extends ClickableGraphic {
+public class MoveablePlayer extends ClickableGraphic {
 	
 	private int level;
 	private int knowledgePoints;
@@ -31,7 +31,7 @@ public class Player extends ClickableGraphic {
 	private int yPos;
 	private Image image;
 
-	public Player(int x, int y, String imageLocation) {
+	public MoveablePlayer(int x, int y, String imageLocation) {
 		super(x, y, imageLocation);
 		level = 0;
 		knowledgePoints = 0;
