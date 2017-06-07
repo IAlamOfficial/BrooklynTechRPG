@@ -44,7 +44,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 		if(numberOfEntriesHallway == 0){
 			numberOfEntriesHallway++;
 		}else{
-			textBox.setText("");
+			textBox.setText("Money: $"+TechGame.player.getMoney());
 		}
 	}
 

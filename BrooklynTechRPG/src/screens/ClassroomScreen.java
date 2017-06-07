@@ -39,7 +39,7 @@ public class ClassroomScreen extends FullFunctionScreen implements Runnable, Key
 		if(numberOfEntriesClassroom == 0){
 			numberOfEntriesClassroom++;
 		}else{
-			textBox.setText("");
+			textBox.setText("Money: $"+TechGame.player.getMoney());
 		}
 	}
 	
