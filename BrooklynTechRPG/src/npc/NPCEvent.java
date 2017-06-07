@@ -105,7 +105,11 @@ public class NPCEvent implements Runnable{
 			}
 		});
 	}
-	
+	public void couldNotPpurchase() {
+		String[] arr = {"Sorry you do not have enough money to purchase this item"};
+		showText(arr, null);
+		
+	}
 	public void returnHomework(boolean result) {
 		if(!result){
 			String[] arr = {"You gave in the homework","You have recived 10 Knowledge points", "You have a total of " + p.getKnowledgePoints() + " knowledge points"};
@@ -140,11 +144,7 @@ public class NPCEvent implements Runnable{
 		String[] arr = {"You have no homework to give"};
 		showText(arr, null);
 	}
-	public void couldNotPpurchase() {
-		String[] arr = {"Sorry you do not have enough money to purchase this item"};
-		showText(arr, null);
-		
-	}
+
 
 	
 	

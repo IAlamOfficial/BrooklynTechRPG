@@ -25,6 +25,7 @@ public class Player {
 	private double social;
 
 	private int hw;
+	private int day;
 	public Item[] itm;
 	
 	private int dx;
@@ -43,6 +44,7 @@ public class Player {
 		time = 10;
 		rep = 10;
 		social = 1.0;
+		day = 1;
 		initPlayer();
 
 		//		itm = {new AlarmClock()};
@@ -189,6 +191,15 @@ public class Player {
 		if(this.hw<0) this.hw = 0;
 		
 	}
+
+	public int getDay() {
+		return day;
+	}
+
+	public void setDay() {
+		this.day++;
+	}
+	
 
 
 
