@@ -92,7 +92,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			e.printStackTrace();
 		}
 		
-		hwInventoryButton = new CustomButton(400, 60, 115, 30, "Inventory", new Action() {
+		hwInventoryButton = new CustomButton(485, 60, 115, 30, "Inventory", new Action() {
 			@Override
 			public void act() {
 				TechGame.trpg.setScreen(TechGame.menuScreen);
