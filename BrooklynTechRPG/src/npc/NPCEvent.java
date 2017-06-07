@@ -144,6 +144,24 @@ public class NPCEvent implements Runnable{
 		String[] arr = {"You have no homework to give"};
 		showText(arr, null);
 	}
+	public void doMath(Player p) {
+		String[] arr = {"You have completed a homework assigment.","You have " + p.getHw() + " completed assigments"};
+		showText(arr, new Action() {
+
+			@Override
+			public void act() {
+				NPCEvent.this.p.setKnowledgePoints(5);
+				NPCEvent.this.p.setEnergy(-2);
+				NPCEvent.this.p.setTime(-1);
+				NPCEvent.this.p.setHw(1);
+			}
+		});	
+	}
+	public void dontDoMath(String string) {
+		String[] arr = {"You do not have enough " + string + " to complete your homweork"};
+		showText(arr, null);
+		
+	}
 
 
 	

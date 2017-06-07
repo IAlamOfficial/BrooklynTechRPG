@@ -62,13 +62,29 @@ public class NPCController extends Component implements KeyedComponent {
 					event.haveNoHomework();
 				}
 			}
+			
 			if(event.getNPC() instanceof HomeworkTable){
 				if(p.getEnergy()>1 && p.getTime()>0){
-					
+					event.doMath(p);
 				}else{
-					
+					if(p.getEnergy()<2){
+						event.dontDoMath("energy");
+					}else{
+						event.dontDoMath("time");
+					}
 				}
 			}
+			
+			if(event.getNPC() instanceof Computer){
+				
+			}
+			
+			
+			
+			
+			
+			
+			
 		}
 	}
 

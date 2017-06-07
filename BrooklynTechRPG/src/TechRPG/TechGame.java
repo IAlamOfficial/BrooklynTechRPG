@@ -60,7 +60,7 @@ public class TechGame extends GUIApplication {
 		homeScreen = new HomeScreen(getWidth(),getHeight());
 		//setScreen(homeScreen);
 		
-		
+		player = new Player(0,0,"resources/playerup");
 		
 	}
  
