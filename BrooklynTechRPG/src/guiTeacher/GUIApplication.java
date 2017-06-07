@@ -36,7 +36,7 @@ public abstract class GUIApplication extends JFrame implements Runnable{
 	private Screen currentScreen;
 	private boolean scaleWithWindow; 
 	
-
+ 
 
 
 	public GUIApplication(int width, int height){
