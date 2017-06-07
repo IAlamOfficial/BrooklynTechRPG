@@ -51,7 +51,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 		hallwaybg = new Graphic(0,0,"resources/hallwayimproved.png");
 		hallwaybg.setX((getWidth()-hallwaybg.getWidth())/2);
 		
-		hwMenuScreenButton = new CustomButton(250, 60, 100, 30, "Return", new Action() {
+		hwMenuScreenButton = new CustomButton(250, 60, 100, 30, "Home Screen", new Action() {
 			@Override
 			public void act() {
 				TechGame.trpg.setScreen(TechGame.menuScreen);
@@ -134,7 +134,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 		
 		classroombg = new Graphic(0,0,"resources/classroom.png");
 		classroombg.setX((getWidth()-classroombg.getWidth())/2);
-		crMenuScreenButton = new CustomButton(450, 80, 100, 30, "Return", new Action() {
+		crMenuScreenButton = new CustomButton(450, 80, 100, 30, "Home Screen", new Action() {
 			@Override
 			public void act() {
 				TechGame.trpg.setScreen(TechGame.menuScreen);
@@ -197,7 +197,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 		addObject(hwMenuScreenButton);
 		addObject(textBox);
 		addObject(hwClassRoomButton);
-		viewObjects.add(hwInventoryButton);
+		addObject(hwInventoryButton);
 		//textBox = TextArea(250, 100, 500, 100, text);
 		
 		remove(classroombg);

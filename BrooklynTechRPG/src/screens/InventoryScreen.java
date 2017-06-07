@@ -97,7 +97,7 @@ public class InventoryScreen extends FullFunctionScreen {
 		viewObjects.add(exam);
 		yPos++;
 		
-		menuScreen = new CustomButton(700, 250, 200, 100, "Return", new Action() {
+		menuScreen = new CustomButton(700, 250, 200, 100, "Home Screen", new Action() {
 			@Override
 			public void act() {
 				TechGame.trpg.setScreen(TechGame.menuScreen);
