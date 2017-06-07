@@ -16,16 +16,13 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyListener {
 	
-	private Graphic hallwaybg;//screen 0
-	private Graphic classroombg;//screen 1
-	private int currentScreen;
-	private int numberOfEntries;
-	private TextArea textBox;
+	private Graphic hallwaybg;
 	private CustomButton hwMenuScreenButton;
 	private CustomButton hwClassRoomButton;
 	private CustomButton hwInventoryButton;
-	private CustomButton crMenuScreenButton;
-	private CustomButton crHallwayButton;
+	private TextArea textBox;
+
+	private int numberOfEntriesHallway;
 	private String text;
 			
 	
@@ -39,19 +36,26 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 		// TODO Auto-generated method stub
 
 	}
+	
+	
+	
+	public void performInitialTasks() {
+		// TODO Auto-generated method stub
+		if(numberOfEntriesHallway == 0){
+			numberOfEntriesHallway++;
+		}else{
+			textBox.setText("");
+		}
+	}
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		currentScreen = -1;
-		if(numberOfEntries == 0){
-			currentScreen = 0;
-			text = "Welcome to Brooklyn Tech, this is where you will be spending the next 4 years of your life, learning many new things and making new friends.";
-			numberOfEntries++;
-		}
+		text = "Welcome to Brooklyn Tech, this is where you will be spending the next 4 years of your life, learning many new things and making new friends.";
+
 		hallwaybg = new Graphic(0,0,"resources/hallwayimproved.png");
 		hallwaybg.setX((getWidth()-hallwaybg.getWidth())/2);
 		
-		hwMenuScreenButton = new CustomButton(250, 60, 100, 30, "Home Screen", new Action() {
+		hwMenuScreenButton = new CustomButton(250, 60, 100, 30, "Menu", new Action() {
 			@Override
 			public void act() {
 				TechGame.trpg.setScreen(TechGame.menuScreen);
@@ -74,8 +78,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 		hwClassRoomButton = new CustomButton(360, 60, 115, 30, "Classroom", new Action() {
 			@Override
 			public void act() {
-				currentScreen = 1;
-				goToClassroom();
+				TechGame.trpg.setScreen(TechGame.classroomScreen);
 			}
 		}); 
 				try {
@@ -128,92 +131,13 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-		
-		classroombg = new Graphic(0,0,"resources/classroom.png");
-		classroombg.setX((getWidth()-classroombg.getWidth())/2);
-		crMenuScreenButton = new CustomButton(450, 80, 100, 30, "Home Screen", new Action() {
-			@Override
-			public void act() {
-				TechGame.trpg.setScreen(TechGame.menuScreen);
-			}
-		}); 
-				try {
-			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
-			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
-			Font baseFont=font.deriveFont(20f);
-		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
-			crMenuScreenButton.setFont(baseFont);
-		} catch (FontFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		crHallwayButton = new CustomButton(825, 655, 115, 30, "Hallway", new Action() {
-			@Override
-			public void act() {
-				currentScreen = 0;
-				goToHallway(viewObjects);
-			}
-		}); 
-				try {
-			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
-			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
-			Font baseFont=font.deriveFont(20f);
-		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
-			crHallwayButton.setFont(baseFont);
-		} catch (FontFormatException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		if(currentScreen == 0){
-			viewObjects.add(hallwaybg);
-			viewObjects.add(hwMenuScreenButton);
-			viewObjects.add(hwClassRoomButton);
-			viewObjects.add(hwInventoryButton);
-			viewObjects.add(textBox);
-			
-		}
-		if(currentScreen == 1){
-			viewObjects.add(classroombg);
-			viewObjects.add(crMenuScreenButton);
-			viewObjects.add(crHallwayButton);
-		}
+		viewObjects.add(hallwaybg);
+		viewObjects.add(hwMenuScreenButton);
+		viewObjects.add(hwClassRoomButton);
+		viewObjects.add(hwInventoryButton);
+		viewObjects.add(textBox);
 		
 	
-	}
-	public void goToHallway(List<Visible> viewObjects) {
-		text = "";
-		addObject(hallwaybg);
-		addObject(hwMenuScreenButton);
-		addObject(textBox);
-		addObject(hwClassRoomButton);
-		addObject(hwInventoryButton);
-		//textBox = TextArea(250, 100, 500, 100, text);
-		
-		remove(classroombg);
-		remove(crMenuScreenButton);
-		remove(crHallwayButton);
-	}
-	public void goToClassroom() {
-		addObject(classroombg);
-		addObject(crMenuScreenButton);
-		addObject(crHallwayButton);
-		
-		remove(hallwaybg);
-		remove(hwMenuScreenButton);
-		remove(textBox);
-		remove(hwClassRoomButton);
-		remove(hwInventoryButton);
 	}
 
 }

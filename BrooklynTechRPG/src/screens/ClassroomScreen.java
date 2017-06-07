@@ -1,16 +1,28 @@
 package screens;
 
+import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
+import TechRPG.TechGame;
+import guiTeacher.components.Action;
 import guiTeacher.components.Graphic;
+import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class ClassroomScreen extends FullFunctionScreen implements Runnable, KeyListener {
 	
 	private Graphic classroombg;
-
+	private CustomButton crMenuScreenButton;
+	private CustomButton crHallwayButton;
+	private CustomButton inventoryScreenButton;
+	private TextArea textBox;
+	private String text;
+	private int numberOfEntriesClassroom;
 	public ClassroomScreen(int width, int height) {
 		super(width,height);
 		// TODO Auto-generated constructor stub
@@ -22,12 +34,100 @@ public class ClassroomScreen extends FullFunctionScreen implements Runnable, Key
 		
 	}
 
+	public void performInitialTasks() {
+		// TODO Auto-generated method stub
+		if(numberOfEntriesClassroom == 0){
+			numberOfEntriesClassroom++;
+		}else{
+			textBox.setText("");
+		}
+	}
+	
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		text = "Welcome to your classroom, this is where you will be learning your subjects.";
 		classroombg = new Graphic(0,0,"resources/classroom.png");
 		classroombg.setX((getWidth()-classroombg.getWidth())/2);
-		viewObjects.add(classroombg);
+		crMenuScreenButton = new CustomButton(500, 205, 100, 30, "Menu", new Action() {
+			@Override
+			public void act() {
+				TechGame.trpg.setScreen(TechGame.menuScreen);
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			crMenuScreenButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
+		crHallwayButton = new CustomButton(605, 205, 115, 30, "Hallway", new Action() {
+			@Override
+			public void act() {
+				TechGame.trpg.setScreen(TechGame.hallwayScreen);
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			crHallwayButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		inventoryScreenButton = new CustomButton(725, 205, 115, 30, "Inventory", new Action() {
+			@Override
+			public void act() {
+				TechGame.trpg.setScreen(TechGame.invScreen);
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			inventoryScreenButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+		textBox = new TextArea(500, 235, 380, 100, text);
+		//intro.setBorderThickness(3);
+		textBox.showBorder(false);
+		try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(15f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			textBox.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		viewObjects.add(classroombg);
+		viewObjects.add(crMenuScreenButton);
+		viewObjects.add(crHallwayButton);
+		viewObjects.add(inventoryScreenButton);
+		viewObjects.add(textBox);
 	}
 
 }

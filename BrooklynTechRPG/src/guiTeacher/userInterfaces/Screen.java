@@ -71,6 +71,11 @@ public abstract class Screen extends ComponentContainer{
 		return null;
 	}
 
+	public void performInitialTasks() {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 
 }

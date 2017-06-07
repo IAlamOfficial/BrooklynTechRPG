@@ -27,7 +27,9 @@ public class InventoryScreen extends FullFunctionScreen {
 	private int yPos = 0;
 	private InfoBox descriptionDisplay;
 	private Button exitInv;
-	private CustomButton menuScreen;
+	private CustomButton menuScreenButton;
+	private CustomButton hallwayScreenButton;
+	private CustomButton classRoomScreenButton;
 	private Graphic invbg;
 	private TextLabel title;
 	public static SampleItem test;
@@ -67,37 +69,37 @@ public class InventoryScreen extends FullFunctionScreen {
 		descriptionDisplay = new InfoBox(400, 250, 300, 300, "");
 		viewObjects.add(descriptionDisplay);
 		
-		test = new SampleItem(120,90+(yPos*80),200,75, 0);
+		test = new SampleItem(120,95+(yPos*85),200,75, 0);
 		test.setInfoBox(descriptionDisplay);
 		viewObjects.add(test);
 		yPos++;
 		
-		coffee = new Coffee(120,90+(yPos*80),200,75, 0);
+		coffee = new Coffee(120,95+(yPos*85),200,75, 0);
 		coffee.setInfoBox(descriptionDisplay);
 		viewObjects.add(coffee);
 		yPos++;
 		
-		drink = new EnergyDrink(120,90+(yPos*80),200,75, 0);
+		drink = new EnergyDrink(120,95+(yPos*85),200,75, 0);
 		drink.setInfoBox(descriptionDisplay);
 		viewObjects.add(drink);
 		yPos++;
 		
-		homework = new Homework(120,90+(yPos*80),200,75, 0);
+		homework = new Homework(120,95+(yPos*85),200,75, 0);
 		homework.setInfoBox(descriptionDisplay);
 		viewObjects.add(homework);
 		yPos++;
 		
-		study = new StudyGuide(120,90+(yPos*80),200,75, 0);
+		study = new StudyGuide(120,95+(yPos*85),200,75, 0);
 		study.setInfoBox(descriptionDisplay);
 		viewObjects.add(study);
 		yPos++;
 		
-		exam = new Test(120,90+(yPos*80),200,75, 0);
+		exam = new Test(120,95+(yPos*85),200,75, 0);
 		exam.setInfoBox(descriptionDisplay);
 		viewObjects.add(exam);
 		yPos++;
 		
-		menuScreen = new CustomButton(700, 250, 200, 100, "Home Screen", new Action() {
+		menuScreenButton = new CustomButton(700, 100, 200, 100, "Menu", new Action() {
 			@Override
 			public void act() {
 				TechGame.trpg.setScreen(TechGame.menuScreen);
@@ -108,7 +110,7 @@ public class InventoryScreen extends FullFunctionScreen {
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 			Font baseFont=font.deriveFont(30f);
 		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
-			menuScreen.setFont(baseFont);
+			menuScreenButton.setFont(baseFont);
 		} catch (FontFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -116,7 +118,51 @@ public class InventoryScreen extends FullFunctionScreen {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		viewObjects.add(menuScreen);
+				
+		hallwayScreenButton = new CustomButton(700, 250, 200, 100, "Hallway", new Action() {
+			@Override
+			public void act() {
+				TechGame.trpg.setScreen(TechGame.hallwayScreen);
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(30f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			hallwayScreenButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+		classRoomScreenButton = new CustomButton(700, 400, 200, 100, "Classroom", new Action() {
+			@Override
+			public void act() {
+				TechGame.trpg.setScreen(TechGame.classroomScreen);
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(30f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			classRoomScreenButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+						
+			
+		viewObjects.add(menuScreenButton);
+		viewObjects.add(hallwayScreenButton);
+		viewObjects.add(classRoomScreenButton);
 	}
 	
 	protected void defaultWhenNothingHovered() {
