@@ -29,6 +29,8 @@ public class ClassroomScreen extends FullFunctionScreen implements Runnable, Key
 	public String text;
 	private int numberOfEntriesClassroom;
 	
+	private NPCEvent e;
+	
 	private Faculty teacher;
 	private CustomButton teacherButton;
 	
