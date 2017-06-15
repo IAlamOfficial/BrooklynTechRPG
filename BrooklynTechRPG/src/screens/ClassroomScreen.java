@@ -21,7 +21,7 @@ public class ClassroomScreen extends FullFunctionScreen implements Runnable, Key
 	private CustomButton crHallwayButton;
 	private CustomButton inventoryScreenButton;
 	private CustomButton crHomeButton;
-	public TextArea textBox;
+	public static TextArea textBox;
 	public String text;
 	private int numberOfEntriesClassroom;
 	

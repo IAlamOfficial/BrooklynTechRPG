@@ -25,7 +25,7 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 	private CustomButton bedButton;
 	private CustomButton fridgeButton;
 	
-	public TextArea textBox;
+	public static TextArea textBox;
 	public String text;
 	private int numberOfEntriesHome;
 	public HomeScreen(int width, int height) {

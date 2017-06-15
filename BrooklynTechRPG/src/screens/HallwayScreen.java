@@ -26,7 +26,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 	private CustomButton hwClassRoomButton;//goes to classroom
 	private CustomButton hwInventoryButton;//goes to inventory
 	private CustomButton hwHomeButton;//goes to player's home
-	public TextArea textBox;
+	public static TextArea textBox;
 
 	private int numberOfEntriesHallway;
 	public String text;
