@@ -241,10 +241,10 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 		viewObjects.add(hsInventoryButton);
 		viewObjects.add(hsHallwayButton);
 		
-		viewObjects.add(bed);
+		//viewObjects.add(bed);
 		viewObjects.add(bedButton);
 		
-		viewObjects.add(dinnerTable);
+		//viewObjects.add(dinnerTable);
 		viewObjects.add(dinnerTableButton);
 		
 		viewObjects.add(computer);
