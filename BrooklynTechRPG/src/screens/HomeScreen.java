@@ -27,7 +27,7 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 	public HomeScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
-	}
+	} 
 
 	@Override
 	public void run() {
