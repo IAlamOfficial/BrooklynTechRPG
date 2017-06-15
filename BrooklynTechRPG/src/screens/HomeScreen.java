@@ -39,12 +39,12 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 		if(numberOfEntriesHome == 0){
 			numberOfEntriesHome++;
 		}else{
-			textBox.setText("Click on people to interact with them. Or click on the fridge to get food.");
+			textBox.setText("Click on people to interact with them. Click on the fridge to get food or click the bed to sleep.(adds another day)");
 		}
 	}
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		text = "Welcome to your home, this is where you will be eating and sleeping.";
+		text = "Welcome to your home, this is where you will be eating and sleeping. Click on the fridge to get food or click the bed to sleep.(adds another day)";
 		homebg = new Graphic(0,0,"resources/home.png");
 		homebg.setX((getWidth()-homebg.getWidth())/2);
 		viewObjects.add(homebg);
