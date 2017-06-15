@@ -17,9 +17,10 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyListener {
 	
 	private Graphic hallwaybg;
-	private CustomButton hwMenuScreenButton;
-	private CustomButton hwClassRoomButton;
-	private CustomButton hwInventoryButton;
+	private CustomButton hwMenuScreenButton;//goes back to main menu
+	private CustomButton hwClassRoomButton;//goes to classroom
+	private CustomButton hwInventoryButton;//goes to inventory
+	private CustomButton hwHomeButton;//goes to player's home
 	private TextArea textBox;
 
 	private int numberOfEntriesHallway;
@@ -115,7 +116,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			e.printStackTrace();
 		}
 		
-		textBox = new TextArea(250, 100, 500, 100, text);
+		textBox = new TextArea(250, 100, 500, 125, text);
 		//intro.setBorderThickness(3);
 		textBox.showBorder(false);
 		try {
@@ -131,10 +132,33 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		hwHomeButton = new CustomButton(610, 60, 100, 30, "Home", new Action() {
+			@Override
+			public void act() {
+				TechGame.trpg.setScreen(TechGame.homeScreen);
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			hwHomeButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+				
 		viewObjects.add(hallwaybg);
 		viewObjects.add(hwMenuScreenButton);
 		viewObjects.add(hwClassRoomButton);
 		viewObjects.add(hwInventoryButton);
+		viewObjects.add(hwHomeButton);
 		viewObjects.add(textBox);
 		
 	

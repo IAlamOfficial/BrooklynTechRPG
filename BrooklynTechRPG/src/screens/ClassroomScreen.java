@@ -20,6 +20,7 @@ public class ClassroomScreen extends FullFunctionScreen implements Runnable, Key
 	private CustomButton crMenuScreenButton;
 	private CustomButton crHallwayButton;
 	private CustomButton inventoryScreenButton;
+	private CustomButton crHomeButton;
 	private TextArea textBox;
 	private String text;
 	private int numberOfEntriesClassroom;
@@ -107,7 +108,7 @@ public class ClassroomScreen extends FullFunctionScreen implements Runnable, Key
 			e.printStackTrace();
 		}
 				
-		textBox = new TextArea(500, 235, 380, 100, text);
+		textBox = new TextArea(500, 235, 420, 80, text);
 		//intro.setBorderThickness(3);
 		textBox.showBorder(false);
 		try {
@@ -123,10 +124,32 @@ public class ClassroomScreen extends FullFunctionScreen implements Runnable, Key
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		crHomeButton = new CustomButton(845, 205, 80, 30, "Home", new Action() {
+			@Override
+			public void act() {
+				TechGame.trpg.setScreen(TechGame.homeScreen);
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			crHomeButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
 		viewObjects.add(classroombg);
 		viewObjects.add(crMenuScreenButton);
 		viewObjects.add(crHallwayButton);
 		viewObjects.add(inventoryScreenButton);
+		viewObjects.add(crHomeButton);
 		viewObjects.add(textBox);
 	}
 

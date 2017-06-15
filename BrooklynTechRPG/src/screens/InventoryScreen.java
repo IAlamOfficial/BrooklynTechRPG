@@ -30,6 +30,7 @@ public class InventoryScreen extends FullFunctionScreen {
 	private CustomButton menuScreenButton;
 	private CustomButton hallwayScreenButton;
 	private CustomButton classRoomScreenButton;
+	private CustomButton homeScreenButton;
 	private Graphic invbg;
 	private TextLabel title;
 	public static SampleItem test;
@@ -38,7 +39,18 @@ public class InventoryScreen extends FullFunctionScreen {
 	public static Homework homework;
 	public static StudyGuide study;
 	public static Test exam;
+	private int numberOfEntriesInventory;
 	
+	private TextArea textBox;
+	private String text;
+	public void performInitialTasks() {
+		// TODO Auto-generated method stub
+		if(numberOfEntriesInventory == 0){
+			numberOfEntriesInventory++;
+		}else{
+			textBox.setText("Money: $"+TechGame.player.getMoney());
+		}
+	}
 	public InventoryScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -46,6 +58,7 @@ public class InventoryScreen extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		text = "This is where your stats will be displayed.";
 		invbg = new Graphic(0,0,"resources/inventorybackground.png");
 		invbg.setX((getWidth()-invbg.getWidth())/2);
 		viewObjects.add(invbg);
@@ -71,7 +84,7 @@ public class InventoryScreen extends FullFunctionScreen {
 		
 		test = new SampleItem(120,95+(yPos*85),200,75, 0);
 		test.setInfoBox(descriptionDisplay);
-		viewObjects.add(test);
+		//viewObjects.add(test);
 		yPos++;
 		
 		coffee = new Coffee(120,95+(yPos*85),200,75, 0);
@@ -158,11 +171,49 @@ public class InventoryScreen extends FullFunctionScreen {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-						
-			
+				
+		homeScreenButton = new CustomButton(700, 550, 200, 100, "Home", new Action() {
+			@Override
+			public void act() {
+				TechGame.trpg.setScreen(TechGame.homeScreen);
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(30f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			homeScreenButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		textBox = new TextArea(120, 600, 500, 135, text);
+		//intro.setBorderThickness(3);
+		textBox.showBorder(true);
+		try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(15f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			textBox.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		viewObjects.add(menuScreenButton);
 		viewObjects.add(hallwayScreenButton);
 		viewObjects.add(classRoomScreenButton);
+		viewObjects.add(homeScreenButton);
+		viewObjects.add(textBox);
 	}
 	
 	protected void defaultWhenNothingHovered() {
