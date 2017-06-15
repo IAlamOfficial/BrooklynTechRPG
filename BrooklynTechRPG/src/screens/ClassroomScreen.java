@@ -21,9 +21,11 @@ public class ClassroomScreen extends FullFunctionScreen implements Runnable, Key
 	private CustomButton crHallwayButton;
 	private CustomButton inventoryScreenButton;
 	private CustomButton crHomeButton;
-	private TextArea textBox;
-	private String text;
+	public TextArea textBox;
+	public String text;
 	private int numberOfEntriesClassroom;
+	
+	
 	public ClassroomScreen(int width, int height) {
 		super(width,height);
 		// TODO Auto-generated constructor stub
@@ -144,7 +146,7 @@ public class ClassroomScreen extends FullFunctionScreen implements Runnable, Key
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
+		
 		viewObjects.add(classroombg);
 		viewObjects.add(crMenuScreenButton);
 		viewObjects.add(crHallwayButton);

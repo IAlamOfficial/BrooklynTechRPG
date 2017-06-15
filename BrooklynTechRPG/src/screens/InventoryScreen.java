@@ -41,8 +41,8 @@ public class InventoryScreen extends FullFunctionScreen {
 	public static Test exam;
 	private int numberOfEntriesInventory;
 	
-	private TextArea textBox;
-	private String text;
+	public TextArea textBox;
+	public String text;
 	public void performInitialTasks() {
 		// TODO Auto-generated method stub
 		if(numberOfEntriesInventory == 0){

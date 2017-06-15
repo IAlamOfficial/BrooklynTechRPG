@@ -13,19 +13,27 @@ import guiTeacher.components.Graphic;
 import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
+import npc.DemoForNPC;
+import npc.NPCController;
+import npc.NPCEvent;
 
 public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyListener {
 	
 	private Graphic hallwaybg;
+	private Graphic bully;
+	
 	private CustomButton hwMenuScreenButton;//goes back to main menu
 	private CustomButton hwClassRoomButton;//goes to classroom
 	private CustomButton hwInventoryButton;//goes to inventory
 	private CustomButton hwHomeButton;//goes to player's home
-	private TextArea textBox;
+	public TextArea textBox;
 
 	private int numberOfEntriesHallway;
-	private String text;
-			
+	public String text;
+	
+	private CustomButton bullyButton;
+	private CustomButton merchantButton;
+	private CustomButton ballButton;
 	
 	public HallwayScreen(int width, int height) {
 		super(width, height);
@@ -152,17 +160,42 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
+		bully = new Graphic(100,125,"resources/bully.png");
+		bullyButton = new CustomButton(100, 125, 40, 40, "", new Action() {
+			@Override
+			public void act() {
+				NPCEvent event = new NPCEvent(DemoForNPC.player, bully);
+				NPCController npcCon = new NPCController(getWidth(), getHeight(),event, DemoForNPC.player);
+				viewObjects.add(npcCon);
+				Thread interact = new Thread(event);
+				interact.start();
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			bullyButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 				
 		viewObjects.add(hallwaybg);
 		viewObjects.add(hwMenuScreenButton);
 		viewObjects.add(hwClassRoomButton);
 		viewObjects.add(hwInventoryButton);
 		viewObjects.add(hwHomeButton);
+		viewObjects.add(bullyButton);
+		viewObjects.add(bully);
 		viewObjects.add(textBox);
 		
 	
 	}
-
+	
 }
 
