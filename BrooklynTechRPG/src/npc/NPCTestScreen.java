@@ -36,13 +36,14 @@ public class NPCTestScreen extends FullFunctionScreen{
 		NPCController npcCon = new NPCController(getWidth(), getHeight(),event, DemoForNPC.player);
 		NPCController npcCon1 = new NPCController(getWidth(), getHeight(),event1, DemoForNPC.player);
 		
-		//viewObjects.add(npcCon);
-		viewObjects.add(npcCon1);
+		viewObjects.add(DemoForNPC.player);
+		viewObjects.add(npcCon);
+		//viewObjects.add(npcCon1);
 		
-		//Thread interact = new Thread(event);
-		Thread interact1 = new Thread(event1);
+		Thread interact = new Thread(event);
+		//Thread interact1 = new Thread(event1);
 		
-		interact1.start();
+		interact.start();
 		
 		
 	}

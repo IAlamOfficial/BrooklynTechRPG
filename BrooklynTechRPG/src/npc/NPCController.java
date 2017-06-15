@@ -76,7 +76,49 @@ public class NPCController extends Component implements KeyedComponent {
 			}
 			
 			if(event.getNPC() instanceof Computer){
-				
+				if(p.getEnergy()>0 && p.getTime()>0){
+					event.socialMedia(p);
+				}else{
+					if(p.getEnergy()<1){
+						event.dontDoSocialMedia("energy");
+					}else{
+						event.dontDoSocialMedia("time");
+					}
+				}
+			}
+			
+			if(event.getNPC() instanceof Ball){
+				if(p.getEnergy()>3 && p.getTime()>3){
+					event.play(p);
+				}else{
+					if(p.getEnergy()<1){
+						event.dontPlay("energy");
+					}else{
+						event.dontPlay("time");
+					}
+				}
+			}
+			
+			if(event.getNPC() instanceof ClassTable){
+				if(p.getEnergy()>5 && p.getTime()>5){
+					event.learn(p);
+				}else{
+					if(p.getEnergy()<1){
+						event.dontLearn("energy");
+					}else{
+						event.dontLearn("time");
+					}
+				}
+			}
+			
+			if(event.getNPC() instanceof Food){
+				if(p.getTime()>0){
+					event.eat(p);
+				}else{
+					if(p.getEnergy()<1){
+						event.dontEat();
+					}
+				}
 			}
 			
 			

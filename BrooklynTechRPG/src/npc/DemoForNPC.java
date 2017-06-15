@@ -19,7 +19,7 @@ public class DemoForNPC extends GUIApplication {
 	
 	@Override
 	public void initScreen() {
-		player = new Player();
+		player = new Player(50, 50, "resources/playerdown.png");
 		menuScreen = new NPCTestScreen(getWidth(),getHeight());
 		setScreen(menuScreen);
 		
