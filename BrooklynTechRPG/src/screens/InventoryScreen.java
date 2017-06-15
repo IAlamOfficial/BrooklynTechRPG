@@ -71,7 +71,7 @@ public class InventoryScreen extends FullFunctionScreen {
 		
 		test = new SampleItem(120,95+(yPos*85),200,75, 0);
 		test.setInfoBox(descriptionDisplay);
-		viewObjects.add(test);
+		//viewObjects.add(test);
 		yPos++;
 		
 		coffee = new Coffee(120,95+(yPos*85),200,75, 0);
