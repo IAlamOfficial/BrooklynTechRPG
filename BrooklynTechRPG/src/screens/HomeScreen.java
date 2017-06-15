@@ -15,6 +15,7 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 import npc.Computer;
 import npc.Faculty;
+import npc.Food;
 import npc.HomeworkTable;
 import npc.NPCController;
 import npc.NPCEvent;
@@ -31,11 +32,12 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 	//private Bed bed;
 	private CustomButton bedButton;
 	
-	//private DinnerTable dinnerTable;
+	private Food dinnerTable;
 	private CustomButton dinnerTableButton;
 	
 	private Computer computer;
 	private CustomButton computerButton;
+	
 	private HomeworkTable homeworkTable;
 	private CustomButton homeworkTableButton;
 	
@@ -172,7 +174,7 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 		bedButton = new CustomButton(50, 240, 53, 75, "Bed", new Action() {
 			@Override
 			public void act() {
-				TechGame.trpg.setScreen(TechGame.menuScreen);
+				
 			}
 		}); 
 				try {
@@ -188,11 +190,16 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
-						
+				
+		dinnerTable = new Food("Food",600,200,"resources/ball.png");				
 		dinnerTableButton = new CustomButton(600, 200, 200, 80, "Dinner Table", new Action() {
 			@Override
 			public void act() {
-				TechGame.trpg.setScreen(TechGame.menuScreen);
+				e = new NPCEvent(TechGame.player,dinnerTable);
+				NPCController npcCon = new NPCController(getWidth(), getHeight(),e, TechGame.player);
+				viewObjects.add(npcCon);
+				Thread interact = new Thread(e);
+				interact.start();
 			}
 		}); 
 				try {
@@ -210,12 +217,12 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 		}		
 				
 				
-		computer = new Computer("Teacher",300,140,"resources/ball.png");
-		computerButton = new CustomButton(300, 140, 40, 50, "", new Action() {
+		computer = new Computer("Teacher",200,100,"resources/ball.png");
+		computerButton = new CustomButton(200, 90, 50, 70, "Computer", new Action() {
 			@Override
 			public void act() {
 				e = new NPCEvent(TechGame.player,computer);
-				NPCController npcCon = new NPCController(getWidth(), getHeight(),e, TechGame.player,InventoryScreen.homework);
+				NPCController npcCon = new NPCController(getWidth(), getHeight(),e, TechGame.player);
 				viewObjects.add(npcCon);
 				Thread interact = new Thread(e);
 				interact.start();
@@ -235,6 +242,31 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
+				
+		homeworkTable = new HomeworkTable("Food",100,100,"resources/ball.png");				
+		homeworkTableButton = new CustomButton(100, 100, 100, 60, "Homework Table", new Action() {
+			@Override
+			public void act() {
+				e = new NPCEvent(TechGame.player,homeworkTable);
+				NPCController npcCon = new NPCController(getWidth(), getHeight(),e, TechGame.player);
+				viewObjects.add(npcCon);
+				Thread interact = new Thread(e);
+				interact.start();
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			homeworkTableButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		
 		viewObjects.add(hsMenuScreenButton);
 		viewObjects.add(hsClassRoomButton);
@@ -244,7 +276,7 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 		//viewObjects.add(bed);
 		viewObjects.add(bedButton);
 		
-		//viewObjects.add(dinnerTable);
+		viewObjects.add(dinnerTable);
 		viewObjects.add(dinnerTableButton);
 		
 		viewObjects.add(computer);
