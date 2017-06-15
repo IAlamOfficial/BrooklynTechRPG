@@ -164,7 +164,7 @@ public class ClassroomScreen extends FullFunctionScreen implements Runnable, Key
 				Thread interact = new Thread(e);
 				interact.start();
 				
-			}
+			} 
 		}); 
 				try {
 			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");

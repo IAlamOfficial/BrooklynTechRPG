@@ -19,7 +19,7 @@ import npc.Bully;
 import npc.Merchant;
 import npc.NPC;
 import npc.NPCController;
-import npc.NPCEvent;
+import npc.NPCEvent; 
 
 public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyListener {
 	
