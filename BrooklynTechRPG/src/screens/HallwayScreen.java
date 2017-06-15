@@ -1,5 +1,6 @@
 package screens;
 
+import java.awt.Event;
 import java.awt.Font;
 import java.awt.FontFormatException;
 import java.awt.event.KeyListener;
@@ -32,12 +33,13 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 
 	private int numberOfEntriesHallway;
 	public String text;
+	private NPCEvent e;
 	
 	private CustomButton bullyButton;
 	private CustomButton merchantButton;
 	private CustomButton ballButton;
 	
-	private CustomButton actionButton;
+	private CustomButton bullyActionButton;
 	
 	public HallwayScreen(int width, int height) {
 		super(width, height);
@@ -165,10 +167,19 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			e.printStackTrace();
 		}
 		
-		actionButton = new CustomButton(600, 200, 150, 30, "Action Button", new Action() {
+		bullyActionButton = new CustomButton(600, 200, 150, 30, "Act", new Action() {
 			@Override
 			public void act() {
-				//put your methods here
+				if(e.getNPC() instanceof Bully){
+					if(TechGame.player.getEnergy() > 20){
+						TechGame.player.setEnergy(-20);
+						Bully b = (Bully) e.getNPC();
+						boolean result = b.fight(TechGame.player.getStrength());
+						e.beatBully(result);
+					}else{
+						e.couldNotFight();
+					}
+				}
 			}
 		}); 
 		try {
@@ -176,7 +187,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 			Font baseFont=font.deriveFont(20f);
 			//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
-			actionButton.setFont(baseFont);
+			bullyActionButton.setFont(baseFont);
 		} catch (FontFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -184,17 +195,16 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 		bully = new Bully("Bully",100,125,"resources/bully.png",10);
 		bullyButton = new CustomButton(100, 125, 40, 40, "", new Action() {
 			@Override
 			public void act() {
-				NPCEvent event = new NPCEvent(TechGame.player,bully);
-				NPCController npcCon = new NPCController(getWidth(), getHeight(),event, TechGame.player);
+				e = new NPCEvent(TechGame.player,bully);
+				NPCController npcCon = new NPCController(getWidth(), getHeight(),e, TechGame.player);
 				viewObjects.add(npcCon);
-				Thread interact = new Thread(event);
+				Thread interact = new Thread(e);
 				interact.start();
-				viewObjects.add(actionButton);
+				viewObjects.add(bullyActionButton);
 				
 			}
 		}); 
