@@ -167,7 +167,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			@Override
 			public void act() {
 				NPCEvent event = new NPCEvent(TechGame.player,bully);
-				NPCController npcCon = new NPCController(getWidth(), getHeight(),event, DemoForNPC.player);
+				NPCController npcCon = new NPCController(getWidth(), getHeight(),event, TechGame.player);
 				viewObjects.add(npcCon);
 				Thread interact = new Thread(event);
 				interact.start();
