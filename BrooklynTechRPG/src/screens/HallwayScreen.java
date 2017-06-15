@@ -171,6 +171,8 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 				viewObjects.add(npcCon);
 				Thread interact = new Thread(event);
 				interact.start();
+				
+				
 			}
 		}); 
 				try {
