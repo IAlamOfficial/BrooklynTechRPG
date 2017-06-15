@@ -37,6 +37,8 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 	private CustomButton merchantButton;
 	private CustomButton ballButton;
 	
+	private CustomButton actionButton;
+	
 	public HallwayScreen(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -162,6 +164,27 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		actionButton = new CustomButton(600, 200, 150, 30, "Action Button", new Action() {
+			@Override
+			public void act() {
+				//put your methods here
+			}
+		}); 
+		try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+			//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			actionButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		bully = new Bully("Bully",100,125,"resources/bully.png",10);
 		bullyButton = new CustomButton(100, 125, 40, 40, "", new Action() {
 			@Override
@@ -171,7 +194,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 				viewObjects.add(npcCon);
 				Thread interact = new Thread(event);
 				interact.start();
-				
+				viewObjects.add(actionButton);
 				
 			}
 		}); 
@@ -188,7 +211,6 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
 		viewObjects.add(hallwaybg);
 		viewObjects.add(hwMenuScreenButton);
 		viewObjects.add(hwClassRoomButton);
