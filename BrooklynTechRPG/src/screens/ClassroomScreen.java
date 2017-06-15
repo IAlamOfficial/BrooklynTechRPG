@@ -14,6 +14,7 @@ import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 import npc.Bully;
+import npc.ClassTable;
 import npc.Faculty;
 import npc.NPCController;
 import npc.NPCEvent;
@@ -33,6 +34,9 @@ public class ClassroomScreen extends FullFunctionScreen implements Runnable, Key
 	
 	private Faculty teacher;
 	private CustomButton teacherButton;
+	
+	private ClassTable classTable;
+	private CustomButton classTableButton;
 	
 	public ClassroomScreen(int width, int height) {
 		super(width,height);
@@ -181,15 +185,42 @@ public class ClassroomScreen extends FullFunctionScreen implements Runnable, Key
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		classTable = new ClassTable("Class Table",300,140,"resources/invisible.png");
+		classTableButton = new CustomButton(300, 140, 40, 50, "", new Action() {
+			@Override
+			public void act() {
+				e = new NPCEvent(TechGame.player,classTable);
+				NPCController npcCon = new NPCController(getWidth(), getHeight(),e, TechGame.player);
+				viewObjects.add(npcCon);
+				Thread interact = new Thread(e);
+				interact.start();
 				
+			} 
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			classTableButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}				
 				
 		viewObjects.add(classroombg);
 		viewObjects.add(crMenuScreenButton);
 		viewObjects.add(crHallwayButton);
 		viewObjects.add(inventoryScreenButton);
 		viewObjects.add(crHomeButton);
+		
 		viewObjects.add(teacherButton);
 		viewObjects.add(teacher);
+		viewObjects.add(classTableButton);
+		viewObjects.add(classTable);
 		viewObjects.add(textBox);
 	}
 
