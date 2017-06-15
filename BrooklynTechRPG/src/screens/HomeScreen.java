@@ -13,6 +13,7 @@ import guiTeacher.components.Graphic;
 import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
+import npc.NPCEvent;
 
 public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListener {
 	
@@ -24,6 +25,8 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 	
 	private CustomButton bedButton;
 	private CustomButton fridgeButton;
+	
+	private NPCEvent e;
 	
 	public static TextArea textBox;
 	public String text;
