@@ -33,7 +33,7 @@ public class NPCTestScreen extends FullFunctionScreen{
 		viewObjects.add(area);
 		
 		
-		NPCEvent event = new NPCEvent(DemoForNPC.player, bully, area);
+		NPCEvent event = new NPCEvent(DemoForNPC.player, bully);
 //		NPCEvent event1 = new NPCEvent(DemoForNPC.player, mer, area, coffee);
 //		NPCEvent event2 = new NPCEvent(DemoForNPC.player, fac, area, );
 		

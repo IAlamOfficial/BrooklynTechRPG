@@ -11,16 +11,15 @@ public class NPCEvent implements Runnable{
 	private Player p;
 	private Item i;
 	
-	public NPCEvent(Player p, NPC npc, TextComponent target) {
+	public NPCEvent(Player p, NPC npc) {
 		this.npc = npc;
-		this.target = target;
+
 		this.p = p;
 		
 	}
 	
-	public NPCEvent(Player p, NPC npc, TextComponent target, Item i) {
+	public NPCEvent(Player p, NPC npc, Item i) {
 		this.npc = npc;
-		this.target = target;
 		this.p = p;
 		this.i= i;
 		
