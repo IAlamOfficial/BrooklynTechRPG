@@ -13,6 +13,10 @@ import guiTeacher.components.Graphic;
 import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
+import npc.Bully;
+import npc.Faculty;
+import npc.NPCController;
+import npc.NPCEvent;
 
 public class ClassroomScreen extends FullFunctionScreen implements Runnable, KeyListener {
 	
@@ -25,6 +29,8 @@ public class ClassroomScreen extends FullFunctionScreen implements Runnable, Key
 	public String text;
 	private int numberOfEntriesClassroom;
 	
+	private Faculty teacher;
+	private CustomButton teacherButton;
 	
 	public ClassroomScreen(int width, int height) {
 		super(width,height);
@@ -146,12 +152,42 @@ public class ClassroomScreen extends FullFunctionScreen implements Runnable, Key
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+				
+				
+		teacher = new Faculty("Teacher",300,140,"resources/teacher.png",true);
+		teacherButton = new CustomButton(300, 140, 40, 50, "", new Action() {
+			@Override
+			public void act() {
+				e = new NPCEvent(TechGame.player,teacher);
+				NPCController npcCon = new NPCController(getWidth(), getHeight(),e, TechGame.player,InventoryScreen.homework);
+				viewObjects.add(npcCon);
+				Thread interact = new Thread(e);
+				interact.start();
+				
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			teacherButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+				
 		viewObjects.add(classroombg);
 		viewObjects.add(crMenuScreenButton);
 		viewObjects.add(crHallwayButton);
 		viewObjects.add(inventoryScreenButton);
 		viewObjects.add(crHomeButton);
+		viewObjects.add(teacherButton);
+		viewObjects.add(teacher);
 		viewObjects.add(textBox);
 	}
 

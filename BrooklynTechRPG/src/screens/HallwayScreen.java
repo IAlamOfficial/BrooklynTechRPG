@@ -14,8 +14,9 @@ import guiTeacher.components.Graphic;
 import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
+import npc.Ball;
 import npc.Bully;
-import npc.DemoForNPC;
+import npc.Merchant;
 import npc.NPC;
 import npc.NPCController;
 import npc.NPCEvent;
@@ -23,7 +24,7 @@ import npc.NPCEvent;
 public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyListener {
 	
 	private Graphic hallwaybg;
-	private Bully bully;
+	
 	
 	private CustomButton hwMenuScreenButton;//goes back to main menu
 	private CustomButton hwClassRoomButton;//goes to classroom
@@ -35,8 +36,13 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 	public String text;
 	private NPCEvent e;
 	
+	private Bully bully;
 	private CustomButton bullyButton;
+	
+	private Merchant merchant;
 	private CustomButton merchantButton;
+	
+	private Ball ball;
 	private CustomButton ballButton;
 	
 	private CustomButton bullyActionButton;
@@ -221,13 +227,70 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+				
+		merchant = new Merchant("Merchant",870,125,"resources/merchant.png");
+		merchantButton = new CustomButton(870, 125, 40, 40, "", new Action() {
+			@Override
+			public void act() {
+				e = new NPCEvent(TechGame.player,merchant);
+				NPCController npcCon = new NPCController(getWidth(), getHeight(),e, TechGame.player);
+				viewObjects.add(npcCon);
+				Thread interact = new Thread(e);
+				interact.start();
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			merchantButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
+		ball = new Ball("Ball",300,550,"resources/ball.png");
+		ballButton = new CustomButton(295, 545, 30, 30, "", new Action() {
+			@Override
+			public void act() {
+				e = new NPCEvent(TechGame.player,ball);
+				NPCController npcCon = new NPCController(getWidth(), getHeight(),e, TechGame.player);
+				viewObjects.add(npcCon);
+				Thread interact = new Thread(e);
+				interact.start();
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			ballButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+				
 		viewObjects.add(hallwaybg);
 		viewObjects.add(hwMenuScreenButton);
 		viewObjects.add(hwClassRoomButton);
 		viewObjects.add(hwInventoryButton);
 		viewObjects.add(hwHomeButton);
+		
 		viewObjects.add(bullyButton);
 		viewObjects.add(bully);
+		viewObjects.add(merchantButton);
+		viewObjects.add(merchant);
+		viewObjects.add(ballButton);
+		viewObjects.add(ball);
+		
 		viewObjects.add(textBox);
 		
 	
