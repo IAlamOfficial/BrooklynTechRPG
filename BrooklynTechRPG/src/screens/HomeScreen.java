@@ -49,7 +49,7 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 		homebg.setX((getWidth()-homebg.getWidth())/2);
 		viewObjects.add(homebg);
 		
-		hsMenuScreenButton = new CustomButton(250, 60, 100, 30, "Menu", new Action() {
+		hsMenuScreenButton = new CustomButton(470, 605, 100, 30, "Menu", new Action() {
 			@Override
 			public void act() {
 				TechGame.trpg.setScreen(TechGame.menuScreen);
@@ -69,7 +69,7 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 			e.printStackTrace();
 		}
 		
-		hsClassRoomButton = new CustomButton(360, 60, 115, 30, "Classroom", new Action() {
+		hsClassRoomButton = new CustomButton(575, 605, 115, 30, "Classroom", new Action() {
 			@Override
 			public void act() {
 				TechGame.trpg.setScreen(TechGame.classroomScreen);
@@ -89,7 +89,7 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 			e.printStackTrace();
 		}
 		
-		hsInventoryButton = new CustomButton(485, 60, 115, 30, "Inventory", new Action() {
+		hsInventoryButton = new CustomButton(695, 605, 115, 30, "Inventory", new Action() {
 			@Override
 			public void act() {
 				TechGame.trpg.setScreen(TechGame.invScreen);
@@ -109,9 +109,9 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 			e.printStackTrace();
 		}
 		
-		textBox = new TextArea(250, 100, 500, 100, text);
+		textBox = new TextArea(480, 645, 450, 65, text);
 		//intro.setBorderThickness(3);
-		textBox.showBorder(false);
+		textBox.showBorder(true);
 		try {
 			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
@@ -126,7 +126,7 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 			e.printStackTrace();
 		}
 		
-		hsHallwayButton = new CustomButton(610, 60, 100, 30, "Home", new Action() {
+		hsHallwayButton = new CustomButton(815, 605, 100, 30, "Hallway", new Action() {
 			@Override
 			public void act() {
 				TechGame.trpg.setScreen(TechGame.hallwayScreen);

@@ -116,7 +116,7 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			e.printStackTrace();
 		}
 		
-		textBox = new TextArea(250, 100, 500, 100, text);
+		textBox = new TextArea(250, 100, 500, 125, text);
 		//intro.setBorderThickness(3);
 		textBox.showBorder(false);
 		try {

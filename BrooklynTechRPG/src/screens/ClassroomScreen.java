@@ -108,7 +108,7 @@ public class ClassroomScreen extends FullFunctionScreen implements Runnable, Key
 			e.printStackTrace();
 		}
 				
-		textBox = new TextArea(500, 235, 380, 100, text);
+		textBox = new TextArea(500, 235, 420, 80, text);
 		//intro.setBorderThickness(3);
 		textBox.showBorder(false);
 		try {
