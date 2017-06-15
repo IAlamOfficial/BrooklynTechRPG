@@ -14,13 +14,14 @@ import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 import npc.DemoForNPC;
+import npc.NPC;
 import npc.NPCController;
 import npc.NPCEvent;
 
 public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyListener {
 	
 	private Graphic hallwaybg;
-	private Graphic bully;
+	private NPC bully;
 	
 	private CustomButton hwMenuScreenButton;//goes back to main menu
 	private CustomButton hwClassRoomButton;//goes to classroom
@@ -160,11 +161,11 @@ public class HallwayScreen extends FullFunctionScreen implements Runnable, KeyLi
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		bully = new Graphic(100,125,"resources/bully.png");
+		bully = new NPC("Bully",100,125,"resources/bully.png");
 		bullyButton = new CustomButton(100, 125, 40, 40, "", new Action() {
 			@Override
 			public void act() {
-				NPCEvent event = new NPCEvent(DemoForNPC.player, bully);
+				NPCEvent event = new NPCEvent(TechGame.player, bully);
 				NPCController npcCon = new NPCController(getWidth(), getHeight(),event, DemoForNPC.player);
 				viewObjects.add(npcCon);
 				Thread interact = new Thread(event);
