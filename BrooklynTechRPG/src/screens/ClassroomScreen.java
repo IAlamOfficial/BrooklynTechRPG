@@ -185,8 +185,8 @@ public class ClassroomScreen extends FullFunctionScreen implements Runnable, Key
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		classTable = new ClassTable("Class Table",300,140,"resources/invisible.png");
-		classTableButton = new CustomButton(300, 140, 40, 50, "", new Action() {
+		classTable = new ClassTable("Class Table",245,215,"resources/ball.png");
+		classTableButton = new CustomButton(210, 190, 160, 100, "", new Action() {
 			@Override
 			public void act() {
 				e = new NPCEvent(TechGame.player,classTable);

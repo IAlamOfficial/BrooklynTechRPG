@@ -13,6 +13,10 @@ import guiTeacher.components.Graphic;
 import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
+import npc.Computer;
+import npc.Faculty;
+import npc.HomeworkTable;
+import npc.NPCController;
 import npc.NPCEvent;
 
 public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListener {
@@ -23,10 +27,22 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 	private CustomButton hsInventoryButton;//goes to inventory
 	private CustomButton hsHallwayButton;//goes to player's home
 	
+	
+	//private Bed bed;
 	private CustomButton bedButton;
-	private CustomButton fridgeButton;
+	
+	//private DinnerTable dinnerTable;
+	private CustomButton dinnerTableButton;
+	
+	private Computer computer;
+	private CustomButton computerButton;
+	private HomeworkTable homeworkTable;
+	private CustomButton homeworkTableButton;
 	
 	private NPCEvent e;
+	
+	
+	
 	
 	public static TextArea textBox;
 	public String text;
@@ -173,7 +189,7 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 			e.printStackTrace();
 		}		
 						
-		fridgeButton = new CustomButton(600, 200, 200, 80, "Dinner Table", new Action() {
+		dinnerTableButton = new CustomButton(600, 200, 200, 80, "Dinner Table", new Action() {
 			@Override
 			public void act() {
 				TechGame.trpg.setScreen(TechGame.menuScreen);
@@ -184,7 +200,7 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
 			Font baseFont=font.deriveFont(20f);
 		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
-			fridgeButton.setFont(baseFont);
+			dinnerTableButton.setFont(baseFont);
 		} catch (FontFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -193,13 +209,50 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 			e.printStackTrace();
 		}		
 				
+				
+		computer = new Computer("Teacher",300,140,"resources/ball.png");
+		computerButton = new CustomButton(300, 140, 40, 50, "", new Action() {
+			@Override
+			public void act() {
+				e = new NPCEvent(TechGame.player,computer);
+				NPCController npcCon = new NPCController(getWidth(), getHeight(),e, TechGame.player,InventoryScreen.homework);
+				viewObjects.add(npcCon);
+				Thread interact = new Thread(e);
+				interact.start();
+				
+			} 
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			computerButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		
 		viewObjects.add(hsMenuScreenButton);
 		viewObjects.add(hsClassRoomButton);
 		viewObjects.add(hsInventoryButton);
 		viewObjects.add(hsHallwayButton);
+		
+		viewObjects.add(bed);
 		viewObjects.add(bedButton);
-		viewObjects.add(fridgeButton);
+		
+		viewObjects.add(dinnerTable);
+		viewObjects.add(dinnerTableButton);
+		
+		viewObjects.add(computer);
+		viewObjects.add(computerButton);
+		
+		viewObjects.add(homeworkTable);
+		viewObjects.add(homeworkTableButton);
+		
 		viewObjects.add(textBox);
 	}
 
