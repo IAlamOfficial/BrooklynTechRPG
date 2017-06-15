@@ -7,8 +7,8 @@ public class Faculty extends NPC {
 
 	boolean ability;
 	
-	public Faculty(String name, boolean ability) {
-		super(name);
+	public Faculty(String name, int x, int y, String imageLocation, boolean ability){
+		super(name, x, y, imageLocation);
 		this.ability = ability;
 	}
 	

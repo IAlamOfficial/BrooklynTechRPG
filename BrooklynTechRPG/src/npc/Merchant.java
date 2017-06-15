@@ -2,8 +2,8 @@ package npc;
 
 public class Merchant extends Student{
 
-	public Merchant(String name) {
-		super(name);
+	public Merchant(String name, int x, int y, String imageLocation){
+		super(name, x, y, imageLocation);
 	}
 
 	public String getSpeech(){

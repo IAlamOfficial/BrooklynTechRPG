@@ -10,6 +10,7 @@ import items.Coffee;
 public class NPCTestScreen extends FullFunctionScreen{
 
 	private Bully bully;
+	private Faculty fac;
 	private Merchant mer;
 	private Coffee coffee;
 
@@ -22,8 +23,9 @@ public class NPCTestScreen extends FullFunctionScreen{
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		bully = new Bully("Bully", 10);
-		mer = new Merchant("Merchant");
+		bully = new Bully("Bully",50,250, "resources/jackiechan.jpg", 10);
+//		fac = new Faculty ("Teacher", 250, 100, "resources/jackiechan.jpg", true);
+//		mer = new Merchant("Merchant");
 //		coffee = new Coffee(10,10,100,100);
 		
 		
@@ -32,13 +34,18 @@ public class NPCTestScreen extends FullFunctionScreen{
 		
 		
 		NPCEvent event = new NPCEvent(DemoForNPC.player, bully, area);
-		NPCEvent event1 = new NPCEvent(DemoForNPC.player, mer, area, coffee);
+//		NPCEvent event1 = new NPCEvent(DemoForNPC.player, mer, area, coffee);
+//		NPCEvent event2 = new NPCEvent(DemoForNPC.player, fac, area, );
 		
 		NPCController npcCon = new NPCController(getWidth(), getHeight(),event, DemoForNPC.player);
-		NPCController npcCon1 = new NPCController(getWidth(), getHeight(),event1, DemoForNPC.player);
+//		NPCController npcCon1 = new NPCController(getWidth(), getHeight(),event1, DemoForNPC.player);
+//		NPCController npcCon2 = new NPCController(getWidth(), getHeight(),event2, DemoForNPC.player);
+//		
 		
 		viewObjects.add(DemoForNPC.player);
+//		viewObjects.add(fac);
 		viewObjects.add(npcCon);
+
 		//viewObjects.add(npcCon1);
 		
 		Thread interact = new Thread(event);

@@ -2,7 +2,11 @@ package npc;
 
 import java.awt.Image;
 
-public class NPC {
+import javax.swing.ImageIcon;
+
+import guiTeacher.components.ClickableGraphic;
+
+public class NPC extends ClickableGraphic{
 	
 	private String name;
 	private int talkCount;
@@ -13,11 +17,21 @@ public class NPC {
 	
 	
 	
-	public NPC(String name){
+	public NPC(String name, int x, int y, String imageLocation){
+		super(x, y, imageLocation);
 		this.name = name;
 		talkCount = 0;
+		initNPC(x, y,imageLocation);
 	}
 	
+	private void initNPC(int x, int y, String imageLocation) {
+		ImageIcon player = new ImageIcon(imageLocation);
+		image = player.getImage();
+		xPos = x;
+		yPos = y;
+		
+	}
+
 	public String getSpeech(){
 		talkCount ++;
 		if(talkCount == 1) return "Hi my name is " + getName();
@@ -53,14 +67,6 @@ public class NPC {
 
 	public void setyPos(int yPos) {
 		this.yPos = yPos;
-	}
-
-	public Image getImage() {
-		return image;
-	}
-
-	public void setImage(Image image) {
-		this.image = image;
 	}
 	
 }

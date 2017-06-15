@@ -6,8 +6,8 @@ public class Student extends NPC {
 
 	private String[] speech = {"Yo what's up?","How ya doing?","Hey.","What's good?","Get away from me please.","Go away.", "I don't want to be seen near you."};
 	
-	public Student(String name){
-		super(name);
+	public Student(String name, int x, int y, String imageLocation){
+		super(name, x, y, imageLocation);
 		
 	}
 	

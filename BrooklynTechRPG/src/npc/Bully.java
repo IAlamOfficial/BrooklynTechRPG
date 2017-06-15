@@ -4,8 +4,8 @@ public class Bully extends Student {
 
 	private int strength;
 	private boolean beaten;
-	public Bully(String name, int str) {
-		super(name);
+	public Bully(String name, int x, int y, String imageLocation, int str){
+		super(name, x, y, imageLocation);
 		strength = str;
 		beaten = false;
 	}

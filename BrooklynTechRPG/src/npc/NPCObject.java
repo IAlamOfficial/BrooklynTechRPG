@@ -2,8 +2,8 @@ package npc;
 
 public class NPCObject extends NPC {
 
-	public NPCObject(String name) {
-		super(name);
+	public NPCObject(String name, int x, int y, String imageLocation){
+		super(name, x, y, imageLocation);
 		
 	}
 	public String getSpeech(){
