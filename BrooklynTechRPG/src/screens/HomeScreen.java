@@ -39,7 +39,7 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 		if(numberOfEntriesHome == 0){
 			numberOfEntriesHome++;
 		}else{
-			textBox.setText("Money: $"+TechGame.player.getMoney());
+			textBox.setText("Click on people to interact with them. Or click on the fridge to get food.");
 		}
 	}
 	@Override
@@ -111,7 +111,7 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 		
 		textBox = new TextArea(480, 645, 450, 65, text);
 		//intro.setBorderThickness(3);
-		textBox.showBorder(true);
+		textBox.showBorder(false);
 		try {
 			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
 			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);

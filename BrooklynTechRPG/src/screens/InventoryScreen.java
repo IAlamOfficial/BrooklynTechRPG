@@ -48,7 +48,15 @@ public class InventoryScreen extends FullFunctionScreen {
 		if(numberOfEntriesInventory == 0){
 			numberOfEntriesInventory++;
 		}else{
-			textBox.setText("Money: $"+TechGame.player.getMoney());
+			textBox.setText("Knowledge: "+TechGame.player.getKnowledgePoints()+"\n"+
+					"Money: $"+TechGame.player.getMoney()+"\n"+
+					"Reputation: "+TechGame.player.getRep()+"\n"+
+					"Energy: "+TechGame.player.getEnergy()+"\n"+
+					"Strength: "+TechGame.player.getStrength()+"\n"+
+					"Social: "+TechGame.player.getSocial()+"\n"+
+					"Time: "+TechGame.player.getTime()+"\n"+
+					"Day: "+TechGame.player.getDay()+"\n"+
+					"Level: "+TechGame.player.getLevel()+"\n");
 		}
 	}
 	public InventoryScreen(int width, int height) {
@@ -87,27 +95,27 @@ public class InventoryScreen extends FullFunctionScreen {
 		//viewObjects.add(test);
 		yPos++;
 		
-		coffee = new Coffee(120,95+(yPos*85),200,75, 0);
+		coffee = new Coffee(120,30+(yPos*85),200,75, 0);
 		coffee.setInfoBox(descriptionDisplay);
 		viewObjects.add(coffee);
 		yPos++;
 		
-		drink = new EnergyDrink(120,95+(yPos*85),200,75, 0);
+		drink = new EnergyDrink(120,30+(yPos*85),200,75, 0);
 		drink.setInfoBox(descriptionDisplay);
 		viewObjects.add(drink);
 		yPos++;
 		
-		homework = new Homework(120,95+(yPos*85),200,75, 0);
+		homework = new Homework(120,30+(yPos*85),200,75, 0);
 		homework.setInfoBox(descriptionDisplay);
 		viewObjects.add(homework);
 		yPos++;
 		
-		study = new StudyGuide(120,95+(yPos*85),200,75, 0);
+		study = new StudyGuide(120,30+(yPos*85),200,75, 0);
 		study.setInfoBox(descriptionDisplay);
 		viewObjects.add(study);
 		yPos++;
 		
-		exam = new Test(120,95+(yPos*85),200,75, 0);
+		exam = new Test(120,30+(yPos*85),200,75, 0);
 		exam.setInfoBox(descriptionDisplay);
 		viewObjects.add(exam);
 		yPos++;
@@ -192,7 +200,7 @@ public class InventoryScreen extends FullFunctionScreen {
 			e.printStackTrace();
 		}
 	
-		textBox = new TextArea(120, 600, 500, 135, text);
+		textBox = new TextArea(120, 540, 500, 197, text);
 		//intro.setBorderThickness(3);
 		textBox.showBorder(true);
 		try {
