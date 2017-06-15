@@ -21,6 +21,10 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 	private CustomButton hsClassRoomButton;//goes to classroom
 	private CustomButton hsInventoryButton;//goes to inventory
 	private CustomButton hsHallwayButton;//goes to player's home
+	
+	private CustomButton bedButton;
+	private CustomButton fridgeButton;
+	
 	private TextArea textBox;
 	private String text;
 	private int numberOfEntriesHome;
@@ -39,12 +43,12 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 		if(numberOfEntriesHome == 0){
 			numberOfEntriesHome++;
 		}else{
-			textBox.setText("Click on people to interact with them. Click on the fridge to get food or click the bed to sleep.(adds another day)");
+			textBox.setText("Click on people to interact with them. Click on the dinner table to get food or click the bed to sleep which adds another day");
 		}
 	}
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		text = "Welcome to your home, this is where you will be eating and sleeping. Click on the fridge to get food or click the bed to sleep.(adds another day)";
+		text = "Welcome to your home, this is where you will be eating and sleeping. Click on the dinner table to get food or click the bed to sleep which adds another day.";
 		homebg = new Graphic(0,0,"resources/home.png");
 		homebg.setX((getWidth()-homebg.getWidth())/2);
 		viewObjects.add(homebg);
@@ -145,13 +149,54 @@ public class HomeScreen extends FullFunctionScreen implements Runnable, KeyListe
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-				
+
+		bedButton = new CustomButton(50, 240, 53, 75, "Bed", new Action() {
+			@Override
+			public void act() {
+				TechGame.trpg.setScreen(TechGame.menuScreen);
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			bedButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+						
+		fridgeButton = new CustomButton(600, 200, 200, 80, "Dinner Table", new Action() {
+			@Override
+			public void act() {
+				TechGame.trpg.setScreen(TechGame.menuScreen);
+			}
+		}); 
+				try {
+			File fontFile = new File("resources/MyGirlIsRetroDEMO.ttf");
+			Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+			Font baseFont=font.deriveFont(20f);
+		//	StyledComponent.setBaseFont(baseFont);//Changes font everywhere
+			fridgeButton.setFont(baseFont);
+		} catch (FontFormatException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 				
 		
 		viewObjects.add(hsMenuScreenButton);
 		viewObjects.add(hsClassRoomButton);
 		viewObjects.add(hsInventoryButton);
 		viewObjects.add(hsHallwayButton);
+		viewObjects.add(bedButton);
+		viewObjects.add(fridgeButton);
 		viewObjects.add(textBox);
 	}
 
